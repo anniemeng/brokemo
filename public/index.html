@@ -41,7 +41,7 @@
         //USER IS LOGGED IN
         if(response.status === "connected") {
           $(".fb-login").hide();
-          
+
           //charge divs hide
           $(".type").hide();
           $(".friendList").hide();
@@ -140,7 +140,7 @@
           function initTheApp() {
             updateSmiliesCount();
             setProfile();
-            
+
           }
 
           function setProfile() {
@@ -169,25 +169,28 @@
 
           function showType() {
             $(".type").show();
-
+            initTheApp();
           }
 
           function setTypeSmile() {
             $(".type").hide();
             $(".friendList").show();
             chargeType = "smile";
+            initTheApp();
           }
 
           function setTypeDinner() {
             $(".type").hide();
             $(".friendList").show();
             chargeType = "dinner";
+            initTheApp();
           }
 
           function setTypeFavor() {
             $(".type").hide();
             $(".friendList").show();
             chargeType = "favor";
+            initTheApp();
           }
 
     </script>
@@ -204,19 +207,26 @@
     </div>
 
     <div id="actions">
-      <button type="button" onclick="showType">Charge</button>
+      <button type="button" onclick="showType()">Charge</button>
       <button type="button" onclick="">Pay</button>
       <button type="button" onclick="">Transactions</button>
     </div>
 
-    <div class="type"> 
-      <button type="button" onclick="setTypeSmile">Smile</button>
-      <button type="button" onclick="setTypeDinner">Dinner</button>
-      <button type="button" onclick="setTypeFavor">Favor</button>
+    <div class="type">
+      <button type="button" onclick="setTypeSmile()">Smile</button>
+      <button type="button" onclick="setTypeDinner()">Dinner</button>
+      <button type="button" onclick="setTypeFavor()">Favor</button>
     </div>
 
+<<<<<<< HEAD
     <div class="friendList"> 
       
+=======
+    <div class="friendList">
+      for (int i = 0; i < 5; i++){
+      <button type="button" onclick="setTypeSmile()"> Smile </button>
+    }
+>>>>>>> b0781f96eebb8db63917d8fd08c2542de20120a8
 
     </div>
 
