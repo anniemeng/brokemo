@@ -290,7 +290,7 @@
           }
 
 
-          function createCharge (chargerId, payerId, type, name) {
+          function createCharge (chargerId, payerId, type, name, picture) {
             var Charge = Parse.Object.extend("Charge");
             var charge = new Charge();
           //charge.id = chargerId + payerId + time;
@@ -298,12 +298,15 @@
             charge.set("receiver", chargerId);
             charge.set("type",  type);
             charge.set("name", name );
+            charge.set("picture", picture);
             charge.save();
           };
 
           function inflictCharge() {
             var selected = $('input[name="only"]:checked').val();
             var namePerson = $('input[name="only"]:checked').attr("id");
+            var labelSelect = $('label[for=' + namePerson + ']:checked');
+            var imageSelect = labelSelect.
             console.log("charge type" + chargeType);
             createCharge(Parse.User.current().get("ide"), selected, chargeType, namePerson);
 
@@ -338,7 +341,7 @@
                 alert("Error: " + error.code + " " + error.message);
               }
             });
-            var pendingT = 
+            var pendingT =
             var outer = document.getElementById("pending");
 
 
