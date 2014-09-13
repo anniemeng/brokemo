@@ -15,6 +15,10 @@
           xfbml      : true,
           version    : 'v2.0'
         });
+
+        var tempUserJSON = FB.api('/me', function(response) {
+    				console.log(JSON.stringify(response));
+						});
       };
 
       (function(d, s, id){
@@ -29,9 +33,7 @@
 	Parse.initialize("EbdHBkoWKSqOcEMPf6QWb4R8tP6xxrvRw0h6xG2v", "BnsnS6EjkzATZRrmQKSEXsHQYw3xWg9tnbsUARbi");
     var currentUser = Parse.User.current();
 
-    var tempUserJSON = FB.api('/me', function(response) {
-    				console.log(JSON.stringify(response));
-						});
+    
 
 
     var userList = JSON.parse(tempUserJSON);
