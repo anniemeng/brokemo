@@ -36,20 +36,7 @@
 
     //IF USER SESSION IS CONNECTED SHOW APP
     window.onload = function isLoggedIn() {
-      var Charge = Parse.Object.extend("Charge", {
-            defaults: {
-              payer: "",
-              reciever: "",
-              isDone: false,
-              image: null,
-              type: "",
 
-              //time : "",
-              //id: "",
-              descrip: ""
-               },
-          });
-      
       FB.getLoginStatus(function (response) {
 
 
@@ -209,10 +196,24 @@
             Parse.User.current().save();
             initTheApp();
           }
+          /*
+          var Charge = Parse.Object.extend("Charge", {
+                defaults: {
+                  payer: "",
+                  reciever: "",
+                  isDone: false,
+                  image: null,
+                  type: "",
 
-          
+                  //time : "",
+                  //id: "",
+                  descrip: ""
+                   },
+              });
+              */
 
           function createCharge (chargerId, payerId, type) {
+            var Charge = Parse.Object.extend("Charge");
             var charge = new Charge();
           //charge.id = chargerId + payerId + time;
             charge.set("payer",payerId);
@@ -293,11 +294,12 @@
           function inflictCharge() {
             var selected = $('input[name="only"]:checked').val();
             createCharge(Parse.User.current().get("ide"), selected,chargeType);
-
+            var Charge = Parse.Object.extend("Charge");
             var query = new Parse.Query(Charge);
-            query.equalTo('chargeType', "smile");
+            //query.equalTo('chargeType', "smile");
             query.find({
               success: function(results) {
+                console.log(results);
                 if (results.length)   {
                   //Parse.User.current() = results[0];
                   console.log(results[0]);
