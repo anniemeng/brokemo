@@ -300,6 +300,7 @@
             charge.set("type",  type);
             charge.set("name", name );
             charge.set("picture", picture);
+            charge.set("image", null);
             charge.save();
           };
 
@@ -354,7 +355,7 @@
               }
             });
             for (var i = 0; i < pendings.length; i++) {
-              
+
               var label = document.createElement("label");
               label.htmlFor = pendings[i].name;
 
