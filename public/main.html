@@ -10,6 +10,12 @@
 	<div id="fb-root"></div>
 	<script>
 	var tempUserJSON ;
+	var currentUser = Parse.User.current();
+	window.onload = annie();
+	function annie() {
+	if (currentUser == null) console.log("bam");
+	};
+
 	window.fbAsyncInit = function() {
         FB.init({
           appId      : '600225033422019',
@@ -17,9 +23,9 @@
           version    : 'v2.0'
         });
 
-        tempUserJSON = FB.api('/me', function(response) {
-    				console.log(JSON.stringify(response));
-						});
+        //tempUserJSON = FB.api('/me', function(response) {
+    	//			console.log(JSON.stringify(response));
+		//				});
       };
 
       (function(d, s, id){
@@ -32,16 +38,13 @@
       
 
 	Parse.initialize("EbdHBkoWKSqOcEMPf6QWb4R8tP6xxrvRw0h6xG2v", "BnsnS6EjkzATZRrmQKSEXsHQYw3xWg9tnbsUARbi");
-    var currentUser = Parse.User.current();
-
-    
 
 
-    var userList = JSON.parse(tempUserJSON);
-    var userName = userList.firstName + " " + userList.lastName;
+    //var userList = JSON.parse(tempUserJSON);
+    //var userName = userList.firstName + " " + userList.lastName;
 
     var target = document.getElementById('b');
-    target.html(userName);
+    //target.html(userName);
 
 
 
