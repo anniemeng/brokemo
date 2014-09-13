@@ -276,25 +276,6 @@
             var selected = $('input[name="only"]:checked').val();
             console.log("charge type" + chargeType);
             createCharge(Parse.User.current().get("ide"), selected,chargeType);
-            var Charge = Parse.Object.extend("Charge");
-            var query = new Parse.Query(Charge);
-            //query.equalTo('chargeType', "smile");
-            query.find({
-              success: function(results) {
-                console.log(results);
-                if (results.length)   {
-                  //Parse.User.current() = results[0];
-                  console.log(results[0]);
-                  initTheApp();
-                } else {
-                    console.log("error");
-                    initTheApp();
-                }
-              },
-              error: function() {
-              }
-            });
-
           }
 
 
@@ -318,10 +299,12 @@
       <button type="button" id="tran-btn" class="btn a" onclick="">Transactions</button>
     </div>
 
+    <section class="content">
+
     <div class="type">
-      <button type="button" onclick="setTypeSmile()">Smile</button>
-      <button type="button" onclick="setTypeDinner()">Dinner</button>
-      <button type="button" onclick="setTypeFavor()">Favor</button>
+      <button type="button" class="btn a" onclick="setTypeSmile()">Smile</button>
+      <button type="button" class="btn a" onclick="setTypeDinner()">Dinner</button>
+      <button type="button" class="btn a" onclick="setTypeFavor()">Favor</button>
     </div>
 
 
@@ -348,13 +331,9 @@
       <!---->
     </div>
 
+  </section>
 
-
-
-
-    <div>
-
-
+</div>
 </body>
 
 </html>
