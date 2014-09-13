@@ -135,6 +135,8 @@
           function initTheApp() {
             updateSmiliesCount();
             setProfile();
+            $(".type").hide();
+            $(".friendList").hide();
           }
 
           function setProfile() {
@@ -159,8 +161,29 @@
             initTheApp();
           }
 
-          function createCharge() {
+          var chargeType;
 
+          function showType() {
+            $(".type").show();
+
+          }
+
+          function setTypeSmile() {
+            $(".type").hide();
+            $(".friendList").show();
+            chargeType = "smile";
+          }
+
+          function setTypeDinner() {
+            $(".type").hide();
+            $(".friendList").show();
+            chargeType = "dinner";
+          }
+
+          function setTypeFavor() {
+            $(".type").hide();
+            $(".friendList").show();
+            chargeType = "favor";
           }
 
     </script>
@@ -177,9 +200,22 @@
     </div>
 
     <div id="actions">
-      <button type="button" onclick="createCharge">Charge</button>
+      <button type="button" onclick="showType">Charge</button>
       <button type="button" onclick="">Pay</button>
       <button type="button" onclick="">Transactions</button>
+    </div>
+
+    <div class="type"> 
+      <button type="button" onclick="setTypeSmile">Smile</button>
+      <button type="button" onclick="setTypeDinner">Dinner</button>
+      <button type="button" onclick="setTypeFavor">Favor</button>
+    </div>
+
+    <div class="friendList"> 
+      for (int i = 0; i < 5; i++){
+      <button type="button" onclick="setTypeSmile"> Smile </button>
+    }
+
     </div>
 
     <div id="smiliesCount">
