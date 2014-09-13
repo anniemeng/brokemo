@@ -219,6 +219,8 @@
               });
               */
 
+          // functions for charge action
+
           function createCharge (chargerId, payerId, type) {
             var Charge = Parse.Object.extend("Charge");
             var charge = new Charge();
@@ -319,6 +321,16 @@
             */
           }
 
+          //functions for transactions actions
+          function dispPending() {
+            var pendingT = "";
+            var outer = document.getElementById("pending");
+          
+          
+            initTheApp();
+          }
+
+          
 
 
     </script>
