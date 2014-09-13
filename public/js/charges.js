@@ -19,7 +19,7 @@ function createCharge (chargerId, payerId, type) {
 	charge.payer = payerId;
 	charge.reciever = chargerId;
 	charge.type = type;
-
+  charge.save();
 };
 
 
