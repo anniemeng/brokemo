@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="css/styles.css">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+  <script type="text/javascript" src="/js/charges.js"></script>
+
 </head>
 
 <body>
@@ -33,24 +35,41 @@
        }(document, 'script', 'facebook-jssdk'));
 
     function loginToFacebook() {
-         Parse.FacebookUtils.logIn("public_profile, email, user_friends", {
+        Parse.FacebookUtils.logIn("public_profile, email, user_friends", {
           success: function(user) {
             if (!user.existed()) {
               alert("User signed up and logged in through Facebook!");
-              //window.location.href="main.html";
-              var tempUserJSON ;
-
-        tempUserJSON = FB.api('/me/friends', function(response) {
-            console.log(JSON.stringify(response));
-            });
             } else {
-              alert("User logged in through Facebook!");
-              //window.location.href="main.html";
-              var tempUserJSON ;
+              FB.api('/me/?fields=id,name,picture', function(response) {
+                console.log(JSON.stringify(response));;
 
-        tempUserJSON = FB.api('/me/friends', function(response) {
-            console.log(JSON.stringify(response));
+var img = document.createElement('img');
+img.src = response.picture.data.url;
+document.body.appendChild(img);
+
+              var BrokeUser = Parse.Object.extend('BrokeUser');
+              var query = new Parse.Query(BrokeUser);
+              query.equalTo('name', response.name);
+              query.find({
+                success: function(results) {
+                  if (results.length)   {
+                    window.theUser = results[0];
+                    window.theUser.set('picture', response.picture.data.url);
+                    initTheApp();
+                  } else {
+                    window.theUser = new BrokeUser();
+                    window.theUser.set('name', response.name);
+                    window.theUser.set('picture', response.picture.data.url);
+                    window.theUser.save();
+                    initTheApp();
+                  }
+                },
+                error: function() {
+                }
+              })
             });
+
+
             }
           },
           error: function(user, error) {
@@ -59,7 +78,20 @@
       });
     };
 
+function initTheApp() {
+  updateSmiliesCount();
+}
 
+function updateSmiliesCount() {
+  var el = document.getElementById('smiliesCount');
+  el.innerText = 'You have ' + theUser.get('smilies') + ' smilies';
+}
+
+function decrementSmilie() {
+  theUser.set('smilies', theUser.get('smilies') - 1);
+  theUser.save();
+  initTheApp();
+}
 
     </script>
 
@@ -72,10 +104,15 @@
       <li><a href="https://www.parse.com/docs/js_guide">Parse JavaScript Guide</a></li>
       <li><a href="https://www.parse.com/docs/js">Parse JavaScript API Documentation</a></li>
     </ul>
-    <button onclick="loginToFacebook()"> Login to Facebook </button>
+    <button onclick="loginToFacebook()"> Banana to Facebook </button>
 
     <div style="display:none" class="error">
       Looks like there was a problem saving the test object. Make sure you've set your application ID and javascript key correctly in the call to <code>Parse.initialize</code> in this file.
+    </div>
+
+    <button onclick="decrementSmilie()">Spend smilie</button>
+
+    <div id="smiliesCount">
     </div>
 
     <div style="display:none" class="success">
