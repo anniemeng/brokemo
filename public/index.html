@@ -237,11 +237,12 @@
               //var label = document.createElement("label");
               var check = document.createElement("input");
               check.type = "radio";
-              check.id = friends[i].id;
+              check.value = friends[i].id;
+              check.id= friends[i].name;
               check.name = "only";
 
               var label = document.createElement("label");
-              label.htmlFor = friends[i].id;
+              label.htmlFor = friends[i].name;
 
               var name = document.createTextNode(friends[i].name);
               label.appendChild(name);
@@ -264,8 +265,30 @@
           }
 
           function inflictCharge() {
+<<<<<<< HEAD
             createCharge(Parse.User.current().get("ide"),chargedId,,chargeType);
             alert("You have inflicted charge");
+=======
+            var selected = $('input[name="only"]:checked').val();
+            createCharge(Parse.User.current().get("ide"), selected,chargeType);
+
+            var query = new Parse.Query(Charge);
+            query.equalTo('chargeType', "smile");
+            query.find({
+              success: function(results) {
+                if (results.length)   {
+                  //Parse.User.current() = results[0];
+                  console.log(results[0]);
+                  initTheApp();
+                } else {
+                    console.log("error");
+                    initTheApp();
+                }
+              },
+              error: function() {
+              }
+            })
+>>>>>>> 81fa4f89c1b7d51da54cdd03ea60720849aec392
 
           }
 
@@ -323,7 +346,7 @@
     </div>
 
     <div class = "uploadPhoto">
-      
+
     </div>
 
 
