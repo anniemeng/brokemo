@@ -37,7 +37,7 @@
 	var currentUser = Parse.User.current();
 	window.onload = annie();
 	function annie() {
-	if (currentUser == null) console.log("bam");
+	if (currentUser != null) console.log("bam");
 	};
 
     //var userList = JSON.parse(tempUserJSON);
