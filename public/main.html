@@ -14,12 +14,20 @@
 
     var currentUser = Parse.User.current();
 
+    var userList = FB.api('/me', function(response) {
+    				console.log(JSON.stringify(response));
+						});
+    
+
     function logOut() {
     	Parse.User.logOut();
     	window.location.href="index.html";
     };
 
+   
+
     </script>
+    
   <h1>this is a test</h1>
   <button onclick="logOut()"> Log Out </button>
 
