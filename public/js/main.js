@@ -11,7 +11,15 @@ $(function () {
         type: "",
         descrip: ""
       },
-  })
+  });
 
   //collections
+  var ChargeList = Parse.Collection.extend( {
+    model: Charge,
+
+  });
+
+  var ChargeView = Parse.View.extend({
+
+  });
 });
