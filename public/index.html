@@ -40,33 +40,17 @@
               //window.location.href="main.html";
               var tempUserJSON ;
 
-    window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '600225033422019',
-          xfbml      : true,
-          version    : 'v2.0'
-        });
-
-        tempUserJSON = FB.api('/me', function(response) {
+        tempUserJSON = FB.api('/me/friends', function(response) {
             console.log(JSON.stringify(response));
             });
-      };
             } else {
               alert("User logged in through Facebook!");
               //window.location.href="main.html";
               var tempUserJSON ;
 
-    window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '600225033422019',
-          xfbml      : true,
-          version    : 'v2.0'
-        });
-
-        tempUserJSON = FB.api('/me', function(response) {
+        tempUserJSON = FB.api('/me/friends', function(response) {
             console.log(JSON.stringify(response));
             });
-      };
             }
           },
           error: function(user, error) {
@@ -75,7 +59,7 @@
       });
     };
 
-    
+
 
     </script>
 
