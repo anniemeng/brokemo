@@ -11,8 +11,12 @@
 	<script>
 	var tempUserJSON ;
 	Parse.initialize("EbdHBkoWKSqOcEMPf6QWb4R8tP6xxrvRw0h6xG2v", "BnsnS6EjkzATZRrmQKSEXsHQYw3xWg9tnbsUARbi");
+	
 	var currentUser = Parse.User.current();
-	window.onload = annie();
+	function va() {
+		currentUser = Parse.User.current();
+	}
+	//window.onload = annie();
 	function annie() {
 	if (currentUser != null) console.log("bam");
 	};
@@ -50,7 +54,7 @@
 
     function logOut() {
     	Parse.User.logOut();
-    	window.location.href="index.html";
+    	//window.location.href="index.html";
     };
     </script>
 
@@ -68,6 +72,8 @@
   <h1>this is a test</h1>
 
   <button onclick="logOut()"> Log Out </button>
+  <button onclick="annie()"> annie </button>
+  <button onclick="va()"> anniacsbsee </button>
   <div id="button-opt">
     <button type="button" class="pay">Pay</button>
     <button type="button" class="charge">Charge</button>
