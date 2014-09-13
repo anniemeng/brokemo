@@ -75,7 +75,7 @@
           });
 
           //RETRIEVE FRIEND INFO
-          FB.api('me/friends', { fields: 'id, name, picture' }, function(response) {
+        /*  FB.api('me/friends', { fields: 'id, name, picture' }, function(response) {
             var friendList = [];
             for (var i = 0, i < response.data.length, i++) {
               var friends = response.data[i];
@@ -83,7 +83,7 @@
               friendList[i] = currFriend;
               console.log(friendList[i]);
             }
-          });
+          });*/
         }
       });
     };
