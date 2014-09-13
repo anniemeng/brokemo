@@ -282,10 +282,9 @@
 
               var name = document.createTextNode(friends[i].name);
               label.appendChild(name);
-              //var img = document.createElement("img");
-              //img.src = friends[i].picture;
-              //check.appendChild(img);
-              //check.appendChild(label);
+              var img = document.createElement("img");
+              img.src = friends[i].picture;
+              label.appendChild(img);
               singleFriend.appendChild(check);
               singleFriend.appendChild(label);
               outer.appendChild(singleFriend);
@@ -381,10 +380,10 @@
 
     <!--The divs for pay action-->
     <div class = "viewTransactions">
-      <div class = "pendingTransactions"> 
+      <div class = "pendingTransactions">
         <ul class= "pending"> </ul>
       </div>
-      <div class = "confirmTransactions"> 
+      <div class = "confirmTransactions">
         <ul class= "confirm"> </ul>
       </div>
     </div>
