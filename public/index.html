@@ -57,15 +57,16 @@
             query.find({
               success: function(results) {
                 if (results.length)   {
-                  window.theUser = results[0];
-                  console.log(window.theUser);
-                  window.theUser.set('picture', response.picture.data.url);
+                  //Parse.User.current() = results[0];
+                  console.log(Parse.User.current());
+                  Parse.User.current().set('name', response.name);
+                  Parse.User.current().set('picture', response.picture.data.url);
                   initTheApp();
                 } else {
-                    window.theUser = new BrokeUser();
-                    window.theUser.set('name', response.name);
-                    window.theUser.set('picture', response.picture.data.url);
-                    window.theUser.save();
+                    Parse.User.current() = new BrokeUser();
+                    Parse.User.current().set('name', response.name);
+                    Parse.User.current().set('picture', response.picture.data.url);
+                    Parse.User.current().save();
                     initTheApp();
                 }
               },
@@ -103,15 +104,16 @@
         success: function(results) {
           if (results.length)   {
             $(".fb-login").hide();
-            window.theUser = results[0];
-            window.theUser.set('picture', response.picture.data.url);
+
+            Parse.User.current().set('name', response.name);
+            Parse.User.current().set('picture', response.picture.data.url);
             initTheApp();
           } else {
             $(".fb-login").hide();
-            window.theUser = new BrokeUser();
-            window.theUser.set('name', response.name);
-            window.theUser.set('picture', response.picture.data.url);
-            window.theUser.save();
+            Parse.User.current() = new BrokeUser();
+            Parse.User.current().set('name', response.name);
+            Parse.User.current().set('picture', response.picture.data.url);
+            Parse.User.current().save();
             initTheApp();
           }
         },
@@ -151,24 +153,24 @@
           }
 
           function setProfile() {
-            $("#prof-photo").attr("src", theUser.get("picture"));
-            $("#fb-name").text(theUser.get('name'));
+            $("#prof-photo").attr("src", Parse.User.current().get("picture"));
+            $("#fb-name").text(Parse.User.current().get('name'));
           }
 
           function updateSmiliesCount() {
             var el = document.getElementById('smiliesCount');
-            el.innerText = 'You have ' + theUser.get('smilies') + ' smilies';
+            el.innerText = 'You have ' + Parse.User.current().get('smilies') + ' smilies';
           }
 
           function incrSmilie() {
-            theUser.set('smilies', theUser.get('smilies') + 1);
-            theUser.save();
+            Parse.User.current().set('smilies', Parse.User.current().get('smilies') + 1);
+            Parse.User.current().save();
             initTheApp();
           }
 
           function decrementSmilie() {
-            theUser.set('smilies', theUser.get('smilies') - 1);
-            theUser.save();
+            Parse.User.current().set('smilies', Parse.User.current().get('smilies') - 1);
+            Parse.User.current().save();
             initTheApp();
           }
 
