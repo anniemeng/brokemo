@@ -350,6 +350,7 @@
                 var singleCharge = document.createElement("div");
                 singleCharge.setAttribute("class", "singleCharge");
 
+
                 var profImage = document.createElement("img");
                 profImage.src = results[i].attributes["picture"];
                 var pName = document.createElement("h2");
@@ -365,7 +366,7 @@
 
                 outer.appendChild(singleCharge);
               }
-             },
+              },
               error: function(error) {
                 alert("Error: " + error.code + " " + error.message);
               }
