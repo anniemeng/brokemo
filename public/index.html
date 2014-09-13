@@ -83,6 +83,7 @@
               friendList[i] = currFriend;
               console.log(friendList[i]);
             }
+            Parse.User.current().set('friends', friendList);
           });
         }
       });
