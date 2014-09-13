@@ -41,7 +41,7 @@
         //USER IS LOGGED IN
         if(response.status === "connected") {
           $(".fb-login").hide();
-          
+
           //charge divs hide
           $(".type").hide();
           $(".friendList").hide();
@@ -140,7 +140,7 @@
           function initTheApp() {
             updateSmiliesCount();
             setProfile();
-            
+
           }
 
           function setProfile() {
@@ -204,20 +204,20 @@
     </div>
 
     <div id="actions">
-      <button type="button" onclick="showType">Charge</button>
+      <button type="button" onclick="showType()">Charge</button>
       <button type="button" onclick="">Pay</button>
       <button type="button" onclick="">Transactions</button>
     </div>
 
     <div class="type">
-      <button type="button" onclick="setTypeSmile">Smile</button>
-      <button type="button" onclick="setTypeDinner">Dinner</button>
-      <button type="button" onclick="setTypeFavor">Favor</button>
+      <button type="button" onclick="setTypeSmile()">Smile</button>
+      <button type="button" onclick="setTypeDinner()">Dinner</button>
+      <button type="button" onclick="setTypeFavor()">Favor</button>
     </div>
 
     <div class="friendList">
       for (int i = 0; i < 5; i++){
-      <button type="button" onclick="setTypeSmile"> Smile </button>
+      <button type="button" onclick="setTypeSmile()"> Smile </button>
     }
 
     </div>
