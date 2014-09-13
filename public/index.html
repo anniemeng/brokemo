@@ -36,7 +36,22 @@
 
     //IF USER SESSION IS CONNECTED SHOW APP
     window.onload = function isLoggedIn() {
+      var Charge = Parse.Object.extend("Charge", {
+            defaults: {
+              payer: "",
+              reciever: "",
+              isDone: false,
+              image: null,
+              type: "",
+
+              //time : "",
+              //id: "",
+              descrip: ""
+               },
+          });
+      
       FB.getLoginStatus(function (response) {
+
 
         //USER IS LOGGED IN
         if(response.status === "connected") {
@@ -195,22 +210,10 @@
             initTheApp();
           }
 
-          var Charge = Parse.Object.extend("Charge", {
-            defaults: {
-              payer: "",
-              reciever: "",
-              isDone: false,
-              image: null,
-              type: "",
-
-              //time : "",
-              //id: "",
-              descrip: ""
-               },
-          });
+          
 
           function createCharge (chargerId, payerId, type) {
-          var charge = new Charge();
+            var charge = new Charge();
           //charge.id = chargerId + payerId + time;
             charge.set("payer",payerId);
             charge.set("reciever", chargerId);
