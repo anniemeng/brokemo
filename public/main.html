@@ -9,21 +9,7 @@
 	<script>
 
 	Parse.initialize("EbdHBkoWKSqOcEMPf6QWb4R8tP6xxrvRw0h6xG2v", "BnsnS6EjkzATZRrmQKSEXsHQYw3xWg9tnbsUARbi");
-      window.fbAsyncInit = function() {
-      Parse.FacebookUtils.init({
-        appId      : '600225033422019', // Facebook App ID
-        //channelUrl : '//brokemo.parseapp.com/channel.html', // Channel File
-        cookie     : true, // enable cookies to allow Parse to access the session
-        xfbml      : true  // parse XFBML
-      });
-    };
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/all.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
+      
 
 
     var currentUser = Parse.User.current();
