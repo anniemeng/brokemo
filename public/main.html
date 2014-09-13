@@ -8,27 +8,26 @@
 
 <body>
 	<script>
-
 	Parse.initialize("EbdHBkoWKSqOcEMPf6QWb4R8tP6xxrvRw0h6xG2v", "BnsnS6EjkzATZRrmQKSEXsHQYw3xWg9tnbsUARbi");
-
-
     var currentUser = Parse.User.current();
 
     var userList = FB.api('/me', function(response) {
     				console.log(JSON.stringify(response));
 						});
-    
+
 
     function logOut() {
     	Parse.User.logOut();
     	window.location.href="index.html";
     };
-
-   
-
     </script>
-    
+
   <h1>this is a test</h1>
   <button onclick="logOut()"> Log Out </button>
+  <div id="button-opt">
+    <button type="button" id="pay">Pay</button>
+    <button type="button" id="charge">Charge</button>
+    <button type="button" id="history">History</button>
+  </div>
 
 </body>
