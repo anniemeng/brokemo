@@ -71,7 +71,8 @@
 
           //RETRIEVE FRIEND INFO
           FB.api('me/friends', function(response) {
-
+            var friends = response.data;
+            console.log(friends);
           });
         }
       });

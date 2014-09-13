@@ -9,7 +9,7 @@ var Charge = Parse.Object.extend("Charge", {
 
       //time : "",
       //id: "",
-      descrip: ""      
+      descrip: ""
     },
 });
 
@@ -28,8 +28,5 @@ function confirmPayment (obj) {
 	obj.isDone = true;
 };
 
-      //descrip: ""
-    },
-});
 
 
