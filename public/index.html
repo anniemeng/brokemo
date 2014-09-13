@@ -225,6 +225,7 @@
           var chargedId;
 
           function showType() {
+            $(".viewTransactions").hide();
             $(".type").show();
             $("#showFriend").empty();
             initTheApp();
@@ -283,14 +284,6 @@
             initTheApp();
           }
 
-          function setChargedFriend(friendId) {
-            //$(".friendList").hide();
-            //$(".submitCharge").show();
-            chargeId = friendId;
-            initTheApp();
-          }
-
-
           function createCharge (chargerId, payerId, type, name, picture) {
             var Charge = Parse.Object.extend("Charge");
             var charge = new Charge();
@@ -312,7 +305,7 @@
             createCharge(Parse.User.current().get("ide"), selected, chargeType, namePerson, imgProfile);
 
 
-            /*CHECK IF CHARGE CREATED*/
+            /*CHECK IF CHARGE CREATED
             var Charge = Parse.Object.extend("Charge");
             var query = new Parse.Query(Charge);
             query.find({
@@ -325,13 +318,19 @@
                 alert("Error: " + error.code + " " + error.message);
               }
             });
-
+            */
           }
 
           //functions for transactions actions
           function dispTransactions () {
+            $("#showFriend").empty();
+            $(".friendList").hide();
+            $(".type").hide();
+            initTheApp();
             dispPending();
             dispConfirm();
+            $(".viewTransactions").show();
+            initTheApp();
           }
 
 
@@ -342,14 +341,13 @@
             query.equalTo("image", null);
             query.find({
               success: function(results) {
-                alert("Successfully retrieved " + results.length + " scores.");
-                console.log(results);
+                //alert("Successfully retrieved " + results.length + " scores.");
+                //console.log(results);
                 // Do something with the returned Parse.Object values
                   var outer = document.getElementById("pending");
                   for (var i = 0; i < results.length; i++) {
                     var singleCharge = document.createElement("div");
                     singleCharge.setAttribute("class", "singleCharge");
-
 
                     var profImage = document.createElement("img");
                     profImage.src = results[i].attributes["picture"];
