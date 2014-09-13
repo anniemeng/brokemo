@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "_default": {
+            "link": "brokemo"
+        }, 
+        "brokemo": {
+            "applicationId": "EbdHBkoWKSqOcEMPf6QWb4R8tP6xxrvRw0h6xG2v", 
+            "masterKey": "wlvMI5bAWb2wGvM26KPjtSHQBmzjzfMgrzvk6Axd"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.0"
+    }
+}
