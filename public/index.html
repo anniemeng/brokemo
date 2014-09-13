@@ -345,17 +345,26 @@
                 alert("Successfully retrieved " + results.length + " scores.");
                 console.log(results);
                 // Do something with the returned Parse.Object values
-              /*for (var i = 0; i < results.length; i++) {
-              var label = document.createElement("label");
-              label.htmlFor = results[i].name;
+                var outer = $(".pending");
+              for (var i = 0; i < results.length; i++) {
+                var singleCharge = document.createElement("div");
+                singleCharge.setAttribute("class", "singleCharge");
 
-              var name = document.createTextNode(results[i].name);
-              label.appendChild(name);
-              var img = document.createElement("img");
-              img.src = results[i].picture;
-              label.appendChild(img);
-              singleFriend.appendChild(label);*/
-            }
+                var profImage = document.createElement("img");
+                profImage.src = results[i].attributes["picture"];
+                var pName = document.createElement("h2");
+
+                pName.appendChild(document.createTextNode(results[i].attributes["name"]);
+
+                var owes = document.createElement("p");
+                owes.appendChild(document.createTextNode("owes you a "+ results[i].attributes["type"]);
+
+                singleCharge.appendChild(profImage);
+                singleCharge.appendChild(pName);
+                singleCharge.appendChild(owes);
+
+                outer.appendChild(singleCharge);
+              }
              },
               error: function(error) {
                 alert("Error: " + error.code + " " + error.message);
