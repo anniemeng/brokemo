@@ -90,6 +90,32 @@
             Parse.User.current().set('friends', friendList);
           });
         }
+
+        /*
+        TO DELETE ALL CHARGES
+        var Charge = Parse.Object.extend("Charge");
+        var query = new Parse.Query(Charge);
+        query.find({
+          success: function(results) {
+            alert("Successfully retrieved " + results.length + " scores.");
+            // Do something with the returned Parse.Object values
+            for (var i = 0; i < results.length; i++) {
+              var object = results[i];
+              object.destroy({
+                success:function() {
+                  console.log("deleted");
+                },
+                error:function() {
+                  console.log("no deleted");
+                }
+              })
+            }
+          },
+          error: function(error) {
+            alert("Error: " + error.code + " " + error.message);
+          }
+        });
+        */
       });
     };
 
@@ -276,6 +302,21 @@
             var selected = $('input[name="only"]:checked').val();
             console.log("charge type" + chargeType);
             createCharge(Parse.User.current().get("ide"), selected,chargeType);
+
+
+            /**CHECK IF CHARGE CREATED
+            var Charge = Parse.Object.extend("Charge");
+            var query = new Parse.Query(Charge);
+            query.find({
+              success: function(results) {
+                alert("Successfully retrieved " + results.length + " scores.");
+                // Do something with the returned Parse.Object values
+              },
+              error: function(error) {
+                alert("Error: " + error.code + " " + error.message);
+              }
+            });
+            */
           }
 
 
