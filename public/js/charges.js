@@ -5,6 +5,7 @@ var Charge = Parse.Object.extend("Charge", {
       isDone: false,
       image: null,
       type: "",
-      descrip: ""
+      //descrip: ""
     },
-})
+});
+
