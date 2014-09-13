@@ -196,6 +196,7 @@
 
           function showType() {
             $(".type").show();
+            $("#showFriend").empty();
             initTheApp();
           }
 
@@ -229,10 +230,10 @@
             for (var i = 0; i < friends.length; i++) {
               var li = document.createElement("li");
               var name = document.createTextNode(friends[i].name);
-              //var img = document.createElement("img");
-              //img.src = friends[i].photo;
-              //li = "<li>" name + img + "</li>";
+              var img = document.createElement("img");
+              img.src = friends[i].picture;
               li.appendChild(name);
+              li.appendChild(img);
               outer.appendChild(li);
             }
             initTheApp();
