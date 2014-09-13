@@ -227,14 +227,27 @@
           function dispFriend() {
             var friends = Parse.User.current().get("friends");
             var outer = document.getElementById("showFriend");
+            var singleFriend = document.createElement("div");
+            singleFriend.setAttribute("class", "single");
             for (var i = 0; i < friends.length; i++) {
-              var li = document.createElement("li");
+              //var label = document.createElement("label");
+              var check = document.createElement("input");
+              check.type = "radio";
+              check.id = friends[i].id;
+              check.name = "only";
+
+              var label = document.createElement("label");
+              label.htmlFor = friends[i].id;
+
               var name = document.createTextNode(friends[i].name);
-              var img = document.createElement("img");
-              img.src = friends[i].picture;
-              li.appendChild(name);
-              li.appendChild(img);
-              outer.appendChild(li);
+              label.appendChild(name);
+              //var img = document.createElement("img");
+              //img.src = friends[i].picture;
+              //check.appendChild(img);
+              //check.appendChild(label);
+              singleFriend.appendChild(check);
+              singleFriend.appendChild(label);
+              outer.appendChild(singleFriend);
             }
             initTheApp();
           }
