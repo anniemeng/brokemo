@@ -77,7 +77,7 @@
           //RETRIEVE FRIEND INFO
         FB.api('me/friends', { fields: 'id, name, picture' }, function(response) {
             var friendList = [];
-            for (var i = 0, i < response.data.length, i++) {
+            for (var i = 0; i < response.data.length; i++) {
               var friends = response.data[i];
               var currFriend = {"name": friends.name, "id": friends.id, "picture": friends.picture.data["url"]};
               friendList[i] = currFriend;
