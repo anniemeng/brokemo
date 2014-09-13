@@ -322,7 +322,18 @@
 
           //functions for transactions actions
           function dispPending() {
-            var pendingT = "";
+            var Charge = Parse.Object.extend("Charge");
+            var query = new Parse.Query(Charge);
+            query.find({
+              success: function(results) {
+                //alert("Successfully retrieved " + results.length + " scores.");
+                // Do something with the returned Parse.Object values
+              },
+              error: function(error) {
+                alert("Error: " + error.code + " " + error.message);
+              }
+            });
+            var pendingT = 
             var outer = document.getElementById("pending");
           
           
