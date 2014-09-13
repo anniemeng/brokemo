@@ -221,16 +221,6 @@
 
           // functions for charge action
 
-          function createCharge (chargerId, payerId, type) {
-            var Charge = Parse.Object.extend("Charge");
-            var charge = new Charge();
-          //charge.id = chargerId + payerId + time;
-            charge.set("payer",payerId);
-            charge.set("reciever", chargerId);
-            charge.set("type",  type);
-            charge.save();
-          };
-
           var chargeType;
           var chargedId;
 
@@ -299,25 +289,39 @@
             initTheApp();
           }
 
+
+          function createCharge (chargerId, payerId, type, name) {
+            var Charge = Parse.Object.extend("Charge");
+            var charge = new Charge();
+          //charge.id = chargerId + payerId + time;
+            charge.set("payer",payerId);
+            charge.set("receiver", chargerId);
+            charge.set("type",  type);
+            charge.set("name", name );
+            charge.save();
+          };
+
           function inflictCharge() {
             var selected = $('input[name="only"]:checked').val();
+            var namePerson = $('input[name="only"]:checked').attr("id");
             console.log("charge type" + chargeType);
-            createCharge(Parse.User.current().get("ide"), selected,chargeType);
+            createCharge(Parse.User.current().get("ide"), selected, chargeType, namePerson);
 
 
-            /**CHECK IF CHARGE CREATED
+            /*CHECK IF CHARGE CREATED*/
             var Charge = Parse.Object.extend("Charge");
             var query = new Parse.Query(Charge);
             query.find({
               success: function(results) {
                 alert("Successfully retrieved " + results.length + " scores.");
                 // Do something with the returned Parse.Object values
+                console.log(results);
               },
               error: function(error) {
                 alert("Error: " + error.code + " " + error.message);
               }
             });
-            */
+
           }
 
           //functions for transactions actions
@@ -336,12 +340,12 @@
             });
             var pendingT = 
             var outer = document.getElementById("pending");
-          
-          
+
+
             initTheApp();
           }
 
-          
+
 
 
     </script>
