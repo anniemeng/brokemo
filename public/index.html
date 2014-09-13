@@ -37,6 +37,7 @@
           success: function(user) {
             if (!user.existed()) {
               alert("User signed up and logged in through Facebook!");
+              window.location.href="main.html";
             } else {
               alert("User logged in through Facebook!");
             }
