@@ -1,14 +1,64 @@
-/* line 1, ../scss/main.scss */
+/* line 7, ../scss/main.scss */
 body {
   text-align: center;
+  color: #fff;
 }
 
-/* line 5, ../scss/main.scss */
+/* line 12, ../scss/main.scss */
 #profile {
-  margin-top: 10%;
+  padding-top: 10%;
+  padding-bottom: 2%;
+  background-color: #1bbc9b;
 }
 
-/* line 9, ../scss/main.scss */
+/* line 18, ../scss/main.scss */
 #prof-photo {
   border-radius: 50%;
+}
+
+/* line 22, ../scss/main.scss */
+#fb-name {
+  font-size: 50px;
+}
+
+/* line 26, ../scss/main.scss */
+#actions {
+  background-color: #1bbc9b;
+}
+
+/* line 34, ../scss/main.scss */
+.btn {
+  display: inline-block;
+  padding: 1%;
+  margin: 3% 0.5%;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Arial';
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  outline: none;
+  cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+  /* line 48, ../scss/main.scss */
+  .btn {
+    margin-top: 7%;
+  }
+}
+/****LIGHTEN/DARKEN****/
+/* line 54, ../scss/main.scss */
+.a {
+  border: 2px solid #fff;
+  border-radius: 50px;
+  color: #fff;
+  background: #1bbc9b;
+  transition: all ease 0.4s;
+}
+/* line 63, ../scss/main.scss */
+.a:hover {
+  background: #1bbc9b;
+  /* The Fallback */
+  background: rgba(27, 188, 155, 0.5);
+  color: #fff;
 }

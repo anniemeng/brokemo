@@ -1,15 +1,69 @@
+$primary: #1BBC9B;
+@mixin background-opacity($color, $opacity: 0.5) {
+    background: $color; /* The Fallback */
+    background: rgba($color, $opacity);
+}
+
 body {
   text-align:center;
+  color:#fff;
 }
 
 #profile {
-  margin-top:10%;
+  padding-top:10%;
+  padding-bottom:2%;
+  background-color:$primary;
 }
 
 #prof-photo {
   border-radius:50%;
 }
 
+#fb-name {
+  font-size:50px;
+}
+
+#actions {
+  background-color:$primary;
+}
+
 #charge-btn, #pay-btn, #tran-btn {
 
 }
+
+.btn {
+		display: inline-block;
+		padding: 1%;
+		margin:3% 0.5%;
+		text-align: center;
+		text-transform: uppercase;
+		font-family: 'Arial';
+		font-size: 15px;
+		letter-spacing: 0.1em;
+		outline:none;
+		cursor: pointer;
+}
+
+@media (max-width:1000px) {
+	.btn {
+		margin-top:7%;
+	}
+}
+
+/****LIGHTEN/DARKEN****/
+.a {
+	//margin-left:2%;
+	//margin-right:2%;
+  border:2px solid #fff;
+	border-radius:50px;
+	color: #fff;
+	background: $primary;
+	transition: all ease 0.4s;
+
+  &:hover {
+    @include background-opacity($primary, 0.5);
+    //background-color: rgba(27, 188, 155, 0.3);
+    color:#fff;
+  }
+}
+
