@@ -3,14 +3,14 @@ $(function () {
 
   //models
   var Charge = Parse.Object.extend("Charge", {
-      defaults: {
-        payer: "",
-        reciever: "",
-        isDone: false,
-        image: null,
-        type: "",
-        descrip: ""
-      },
+    defaults: {
+      payer: "",
+      reciever: "",
+      isDone: false,
+      image: null,
+      type: "",
+      descrip: ""
+    },
   });
 
   //collections
@@ -20,6 +20,38 @@ $(function () {
   });
 
   var ChargeView = Parse.View.extend({
+    tagName: "li",
+
+    template:_.template($('charge-template').html()),
+
+    events: {
+
+    },
+
 
   });
+
+  //total view
+  var AppView = Parse.View.extend( {
+    el: $("#button-opt"),
+
+    events: {
+    "click .charge": "triggerCharge"
+    },
+
+    initialize: function() {
+
+    },
+
+
+    render: function() {
+
+    },
+
+    triggerCharge: function() {
+      new ChargeView();
+    }
+
+  });
+
 });

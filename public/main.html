@@ -8,15 +8,13 @@
 
 <body>
 	<script>
-
 	Parse.initialize("EbdHBkoWKSqOcEMPf6QWb4R8tP6xxrvRw0h6xG2v", "BnsnS6EjkzATZRrmQKSEXsHQYw3xWg9tnbsUARbi");
-
-
     var currentUser = Parse.User.current();
 
     var tempUserJSON = FB.api('/me', function(response) {
     				console.log(JSON.stringify(response));
 						});
+
 
     var userList = JSON.parse(tempUserJSON);
     var userName = userList.firstName + " " + userList.lastName;
@@ -25,16 +23,31 @@
     target.html(userName);
 
 
+
     function logOut() {
     	Parse.User.logOut();
     	window.location.href="index.html";
     };
-
-   
-
     </script>
+
+    <!--TEMPLATES-->
+    <script type="text/template" id="charge-template">
+      <p>This is charge template</p>
+      <div id="friends">
+      </div>
+    </script>
+
     
   <h1 id = "b" >  </h1>
+
+
+  <h1>this is a test</h1>
+
   <button onclick="logOut()"> Log Out </button>
+  <div id="button-opt">
+    <button type="button" class="pay">Pay</button>
+    <button type="button" class="charge">Charge</button>
+    <button type="button" class="history">History</button>
+  </div>
 
 </body>
