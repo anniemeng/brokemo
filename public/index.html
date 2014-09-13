@@ -119,12 +119,14 @@
                 Parse.User.current().set('name', response.name);
                 Parse.User.current().set('picture', response.picture.data.url);
                 Parse.User.current().set('id', response.id);
+                //console.log(Parse.User.current().get("id"));
                 initTheApp();
               } else {
                   Parse.User.current() = new BrokeUser();
                   Parse.User.current().set('name', response.name);
                   Parse.User.current().set('picture', response.picture.data.url);
                   Parse.User.current().set('id', response.id);
+                  //console.log(Parse.User.current().get("id"));
                   Parse.User.current().save();
                   initTheApp();
               }
