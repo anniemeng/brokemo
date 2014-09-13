@@ -324,6 +324,7 @@
           function dispPending() {
             var Charge = Parse.Object.extend("Charge");
             var query = new Parse.Query(Charge);
+            query.equalTo(receiver, Parse.User.current().get("ide"));
             query.find({
               success: function(results) {
                 //alert("Successfully retrieved " + results.length + " scores.");
