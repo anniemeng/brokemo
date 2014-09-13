@@ -345,27 +345,27 @@
                 alert("Successfully retrieved " + results.length + " scores.");
                 console.log(results);
                 // Do something with the returned Parse.Object values
-                var outer = $(".pending");
-              for (var i = 0; i < results.length; i++) {
-                var singleCharge = document.createElement("div");
-                singleCharge.setAttribute("class", "singleCharge");
+                  var outer = document.getElementById("pending");
+                  for (var i = 0; i < results.length; i++) {
+                    var singleCharge = document.createElement("div");
+                    singleCharge.setAttribute("class", "singleCharge");
 
 
-                var profImage = document.createElement("img");
-                profImage.src = results[i].attributes["picture"];
-                var pName = document.createElement("h2");
+                    var profImage = document.createElement("img");
+                    profImage.src = results[i].attributes["picture"];
+                    var pName = document.createElement("h2");
 
-                pName.appendChild(document.createTextNode(results[i].attributes["name"]);
+                    pName.appendChild(document.createTextNode(results[i].attributes["name"]));
 
-                var owes = document.createElement("p");
-                owes.appendChild(document.createTextNode("owes you a "+ results[i].attributes["type"]);
+                    var owes = document.createElement("p");
+                    owes.appendChild(document.createTextNode("owes you a "+ results[i].attributes["type"]));
 
-                singleCharge.appendChild(profImage);
-                singleCharge.appendChild(pName);
-                singleCharge.appendChild(owes);
+                    singleCharge.appendChild(profImage);
+                    singleCharge.appendChild(pName);
+                    singleCharge.appendChild(owes);
 
-                outer.appendChild(singleCharge);
-              }
+                    outer.appendChild(singleCharge);
+                  }
               },
               error: function(error) {
                 alert("Error: " + error.code + " " + error.message);
@@ -449,7 +449,7 @@
     <!--The divs for pay action-->
     <div class = "viewTransactions">
       <div class = "Transactions">
-        <ul class= "pending"> </ul>
+        <ul id="pending"> </ul>
       </div>
       <div class = "Transactions">
         <ul class= "confirm"> </ul>
