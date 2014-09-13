@@ -253,8 +253,8 @@
           }
 
           function setChargedFriend(friendId) {
-            $(".friendList").hide();
-            $(".submitCharge").show();
+            //$(".friendList").hide();
+            //$(".submitCharge").show();
             chargeId = friendId;
             initTheApp();
           }
@@ -291,10 +291,11 @@
       <ul id="showFriend">
 
       </ul>
+      <button onclick="showType()" > Submit Charge </button>
 
     </div>
 
-    <button onclick="showType()" class="submitCharge"> Submit Charge </button>
+    
 
     <div>
 
