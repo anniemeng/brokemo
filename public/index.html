@@ -10,7 +10,6 @@
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
   <script type="text/javascript" src="/js/charges.js"></script>
-
 </head>
 
 <body>
@@ -23,7 +22,7 @@
         appId      : '600225033422019', // Facebook App ID
         //channelUrl : '//brokemo.parseapp.com/channel.html', // Channel File
         cookie     : true, // enable cookies to allow Parse to access the session
-        xfbml      : true  // parse XFBML
+        xfbml      : true,  // parse XFBML
       });
     };
       (function(d, s, id){
@@ -34,44 +33,96 @@
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
 
-    function loginToFacebook() {
-        Parse.FacebookUtils.logIn("public_profile, email, user_friends", {
-          success: function(user) {
-            if (!user.existed()) {
-              alert("User signed up and logged in through Facebook!");
-            } else {
-              FB.api('/me/?fields=id,name,picture', function(response) {
-                console.log(JSON.stringify(response));
-                var img = document.createElement('img');
-                img.src = response.picture.data.url;
-                document.body.appendChild(img);
 
-              var BrokeUser = Parse.Object.extend('BrokeUser');
-              var query = new Parse.Query(BrokeUser);
-              query.equalTo('name', response.name);
-              query.find({
-                success: function(results) {
-                  if (results.length)   {
-                    window.theUser = results[0];
-                    window.theUser.set('picture', response.picture.data.url);
-                    initTheApp();
-                  } else {
+    //IF USER SESSION IS CONNECTED SHOW APP
+    window.onload = function isLoggedIn() {
+      FB.getLoginStatus(function (response) {
+
+        //USER IS LOGGED IN
+        if(response.status === "connected") {
+          $(".fb-login").hide();
+
+          //RETRIEVE PROFILE INFO
+          FB.api('/me/?fields=id,name,picture', function(response) {
+            console.log(JSON.stringify(response));
+
+            var BrokeUser = Parse.Object.extend('BrokeUser');
+            var query = new Parse.Query(BrokeUser);
+            query.equalTo('name', response.name);
+            query.find({
+              success: function(results) {
+                if (results.length)   {
+                  window.theUser = results[0];
+                  console.log(window.theUser);
+                  window.theUser.set('picture', response.picture.data.url);
+                  initTheApp();
+                } else {
                     window.theUser = new BrokeUser();
                     window.theUser.set('name', response.name);
                     window.theUser.set('picture', response.picture.data.url);
                     window.theUser.save();
                     initTheApp();
-                  }
-                },
-                error: function() {
                 }
-              })
-            });
+              },
+              error: function() {
+              }
+            })
+          });
 
-            FB.api('/me/friends', function (response) {
-              console.log(JSON.stringify(response));
-              console.log(response.data[0]);
-            });
+          //RETRIEVE FRIEND INFO
+          FB.api('me/friends', function(response) {
+
+          });
+        }
+      });
+    };
+
+    function newLogin() {
+      FB.api('/me/?fields=id,name,picture', function(response) {
+        console.log(JSON.stringify(response));
+        var img = document.createElement('img');
+        img.src = response.picture.data.url;
+        document.body.appendChild(img);
+
+      var BrokeUser = Parse.Object.extend('BrokeUser');
+      var query = new Parse.Query(BrokeUser);
+      query.equalTo('name', response.name);
+      query.find({
+        success: function(results) {
+          if (results.length)   {
+            $(".fb-login").hide();
+            window.theUser = results[0];
+            window.theUser.set('picture', response.picture.data.url);
+            initTheApp();
+          } else {
+            $(".fb-login").hide();
+            window.theUser = new BrokeUser();
+            window.theUser.set('name', response.name);
+            window.theUser.set('picture', response.picture.data.url);
+            window.theUser.save();
+            initTheApp();
+          }
+        },
+        error: function() {
+        }
+      })
+    });
+
+    FB.api('/me/friends', function (response) {
+      console.log(JSON.stringify(response));
+      console.log(response.data[0]);
+    });
+  };
+
+    //IF USER IS NOT LOGGED IN BUT PRESSES BUTTON - HIDE WHEN USER IS LOGGED IN
+    function loginToFacebook() {
+        Parse.FacebookUtils.logIn("public_profile, email, user_friends", {
+          success: function(user) {
+            if (!user.existed()) {
+              alert("User signed up and logged in through Facebook!");
+              newLogin();
+            } else {
+              newLogin();
 
             }
           },
@@ -83,6 +134,12 @@
 
           function initTheApp() {
             updateSmiliesCount();
+            setProfile();
+          }
+
+          function setProfile() {
+            $("#prof-photo").attr("src", theUser.get("picture"));
+            $("#fb-name").text(theUser.get('name'));
           }
 
           function updateSmiliesCount() {
@@ -105,14 +162,15 @@
     </script>
 
   <div id="main">
-    <button onclick="loginToFacebook()"> Banana to Facebook </button>
-
-    <div style="display:none" class="error">
-      Looks like there was a problem saving the test object. Make sure you've set your application ID and javascript key correctly in the call to <code>Parse.initialize</code> in this file.
-    </div>
-
+    <button onclick="loginToFacebook()" class="fb-login"> Banana to Facebook </button>
     <button onclick="decrementSmilie()">Spend smilie</button>
     <button onclick="incrSmilie()">Gain smilie!!!!</button>
+
+    <!--PROFILE VIEW-->
+    <div id="profile">
+      <img id="prof-photo">
+      <h1 id="fb-name"></h1>
+    </div>
 
     <div id="smiliesCount">
     </div>
