@@ -347,6 +347,7 @@
                 alert("Successfully retrieved " + results.length + " scores.");
                 // Do something with the returned Parse.Object values
                 pendings = results;
+                console.log("my pendings " + pendings);
               },
               error: function(error) {
                 alert("Error: " + error.code + " " + error.message);
