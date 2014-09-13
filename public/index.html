@@ -274,6 +274,7 @@
               label.appendChild(name);
               var img = document.createElement("img");
               img.src = friends[i].picture;
+              img.setAttribute("id", friends[i].id);
               label.appendChild(img);
               singleFriend.appendChild(check);
               singleFriend.appendChild(label);
@@ -305,10 +306,9 @@
           function inflictCharge() {
             var selected = $('input[name="only"]:checked').val();
             var namePerson = $('input[name="only"]:checked').attr("id");
-            var labelSelect = $('label[for=' + namePerson + ']:checked');
-            var imageSelect = labelSelect.
-            console.log("charge type" + chargeType);
-            createCharge(Parse.User.current().get("ide"), selected, chargeType, namePerson);
+            var imgProfile = document.getElementById(selected).src;
+            console.log("charge type" + chargeType + "img:" + imgProfile);
+            createCharge(Parse.User.current().get("ide"), selected, chargeType, namePerson, imgProfile);
 
 
             /*CHECK IF CHARGE CREATED*/
