@@ -41,11 +41,10 @@
               alert("User signed up and logged in through Facebook!");
             } else {
               FB.api('/me/?fields=id,name,picture', function(response) {
-                console.log(JSON.stringify(response));;
-
-var img = document.createElement('img');
-img.src = response.picture.data.url;
-document.body.appendChild(img);
+                console.log(JSON.stringify(response));
+                var img = document.createElement('img');
+                img.src = response.picture.data.url;
+                document.body.appendChild(img);
 
               var BrokeUser = Parse.Object.extend('BrokeUser');
               var query = new Parse.Query(BrokeUser);
