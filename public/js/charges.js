@@ -16,9 +16,9 @@ var Charge = Parse.Object.extend("Charge", {
 function createCharge (chargerId, payerId, type) {
 	var charge = new Charge();
 	//charge.id = chargerId + payerId + time;
-	charge.payer = payerId;
-	charge.reciever = chargerId;
-	charge.type = type;
+	charge.set("payer",payerId);
+	charge.set("reciever", chargerId);
+	charge.set("type",  type);
     charge.save();
 };
 
