@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
-  <script type="text/javascript" src="/js/charges.js"></script>
+  <!--<script type="text/javascript" src="/js/charges.js"></script>-->
 </head>
 
 <body>
@@ -194,6 +194,29 @@
             Parse.User.current().save();
             initTheApp();
           }
+
+          var Charge = Parse.Object.extend("Charge", {
+            defaults: {
+              payer: "",
+              reciever: "",
+              isDone: false,
+              image: null,
+              type: "",
+
+              //time : "",
+              //id: "",
+              descrip: ""
+               },
+          });
+
+          function createCharge (chargerId, payerId, type) {
+          var charge = new Charge();
+          //charge.id = chargerId + payerId + time;
+            charge.set("payer",payerId);
+            charge.set("reciever", chargerId);
+            charge.set("type",  type);
+            charge.save();
+          };
 
           var chargeType;
           var chargedId;
