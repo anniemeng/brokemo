@@ -41,6 +41,10 @@
         //USER IS LOGGED IN
         if(response.status === "connected") {
           $(".fb-login").hide();
+          
+          //charge divs hide
+          $(".type").hide();
+          $(".friendList").hide();
 
           //RETRIEVE PROFILE INFO
           FB.api('/me/?fields=id,name,picture', function(response) {
@@ -136,8 +140,7 @@
           function initTheApp() {
             updateSmiliesCount();
             setProfile();
-            $(".type").hide();
-            $(".friendList").hide();
+            
           }
 
           function setProfile() {
