@@ -91,40 +91,57 @@
     };
 
     function newLogin() {
-      FB.api('/me/?fields=id,name,picture', function(response) {
-        console.log(JSON.stringify(response));
-        var img = document.createElement('img');
-        img.src = response.picture.data.url;
-        document.body.appendChild(img);
+      FB.getLoginStatus(function (response) {
 
-      var BrokeUser = Parse.Object.extend('BrokeUser');
-      var query = new Parse.Query(BrokeUser);
-      query.equalTo('name', response.name);
-      query.find({
-        success: function(results) {
-          if (results.length)   {
-            $(".fb-login").hide();
+      //USER IS LOGGED IN
+      if(response.status === "connected") {
+        $(".fb-login").hide();
 
-            Parse.User.current().set('name', response.name);
-            Parse.User.current().set('picture', response.picture.data.url);
-            initTheApp();
-          } else {
-            $(".fb-login").hide();
-            Parse.User.current() = new BrokeUser();
-            Parse.User.current().set('name', response.name);
-            Parse.User.current().set('picture', response.picture.data.url);
-            Parse.User.current().save();
-            initTheApp();
+        //charge divs hide
+        $(".type").hide();
+        $(".friendList").hide();
+        $(".submitCharge").hide();
+
+        //RETRIEVE PROFILE INFO
+        FB.api('/me/?fields=id,name,picture', function(response) {
+          console.log(JSON.stringify(response));
+
+          var BrokeUser = Parse.Object.extend('BrokeUser');
+          var query = new Parse.Query(BrokeUser);
+          query.equalTo('name', response.name);
+          query.find({
+            success: function(results) {
+              if (results.length)   {
+                //Parse.User.current() = results[0];
+                console.log(Parse.User.current());
+                Parse.User.current().set('name', response.name);
+                Parse.User.current().set('picture', response.picture.data.url);
+                initTheApp();
+              } else {
+                  Parse.User.current() = new BrokeUser();
+                  Parse.User.current().set('name', response.name);
+                  Parse.User.current().set('picture', response.picture.data.url);
+                  Parse.User.current().save();
+                  initTheApp();
+              }
+            },
+            error: function() {
+            }
+          })
+        });
+
+        //RETRIEVE FRIEND INFO
+      FB.api('me/friends', { fields: 'id, name, picture' }, function(response) {
+          var friendList = [];
+          for (var i = 0; i < response.data.length; i++) {
+            var friends = response.data[i];
+            var currFriend = {"name": friends.name, "id": friends.id, "picture": friends.picture.data["url"]};
+            friendList[i] = currFriend;
+            console.log(friendList[i]);
           }
-        },
-        error: function() {
-        }
-      })
-    });
-
-    FB.api('/me/friends', function (response) {
-      console.log(JSON.stringify(response));
-      console.log(response.data[0]);
+          Parse.User.current().set('friends', friendList);
+        });
+      }
     });
   };
 
@@ -208,11 +225,17 @@
 
           function dispFriend() {
             var friends = Parse.User.current().get("friends");
-            for (int i = 0; i < friends.length; i++) {
-              var name = "<h1>" + friends[i].name + "</h1>";
-              var pic = "<img>"
-              $("#showFriend").append("")
+            var outer = document.getElementById("showFriend");
+            for (var i = 0; i < friends.length; i++) {
+              var li = document.createElement("li");
+              var name = document.createTextNode(friends[i].name);
+              //var img = document.createElement("img");
+              //img.src = friends[i].photo;
+              //li = "<li>" name + img + "</li>";
+              li.appendChild(name);
+              outer.appendChild(li);
             }
+            initTheApp();
           }
 
           function setChargedFriend(friendId) {
