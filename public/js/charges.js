@@ -1,3 +1,4 @@
+
 var Charge = Parse.Object.extend("Charge", {
     defaults: {
       payer: "",
@@ -5,6 +6,23 @@ var Charge = Parse.Object.extend("Charge", {
       isDone: false,
       image: null,
       type: "",
-      descrip: ""
+      //time : "",
+      //id: "",
+      descrip: ""      
     },
-})
+});
+
+function createCharge (chargerId, payerId, type) {
+	var charge = new Charge();
+	//charge.id = chargerId + payerId + time;
+	charge.payer = payerId;
+	charge.reciever = chargerId;
+	charge.type = type;
+
+};
+
+
+
+function confirmPayment (obj) {
+	obj.isDone = true;
+};
