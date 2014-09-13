@@ -265,10 +265,6 @@
           }
 
           function inflictCharge() {
-<<<<<<< HEAD
-            createCharge(Parse.User.current().get("ide"),chargedId,,chargeType);
-            alert("You have inflicted charge");
-=======
             var selected = $('input[name="only"]:checked').val();
             createCharge(Parse.User.current().get("ide"), selected,chargeType);
 
@@ -288,7 +284,6 @@
               error: function() {
               }
             })
->>>>>>> 81fa4f89c1b7d51da54cdd03ea60720849aec392
 
           }
 
