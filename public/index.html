@@ -169,7 +169,6 @@
     };
 
           function initTheApp() {
-            updateSmiliesCount();
             setProfile();
 
           }
@@ -177,23 +176,6 @@
           function setProfile() {
             $("#prof-photo").attr("src", Parse.User.current().get("picture"));
             $("#fb-name").text(Parse.User.current().get('name'));
-          }
-
-          function updateSmiliesCount() {
-            var el = document.getElementById('smiliesCount');
-            el.innerText = 'You have ' + Parse.User.current().get('smilies') + ' smilies';
-          }
-
-          function incrSmilie() {
-            Parse.User.current().set('smilies', Parse.User.current().get('smilies') + 1);
-            Parse.User.current().save();
-            initTheApp();
-          }
-
-          function decrementSmilie() {
-            Parse.User.current().set('smilies', Parse.User.current().get('smilies') - 1);
-            Parse.User.current().save();
-            initTheApp();
           }
           /*
           var Charge = Parse.Object.extend("Charge", {
@@ -321,8 +303,6 @@
 
   <div id="main">
     <button onclick="loginToFacebook()" class="fb-login"> Banana to Facebook </button>
-    <button onclick="decrementSmilie()">Spend smilie</button>
-    <button onclick="incrSmilie()">Gain smilie!!!!</button>
 
     <!--PROFILE VIEW-->
     <div id="profile">
@@ -333,9 +313,9 @@
 
     <!--The divs for charge action -->
     <div id="actions">
-      <button type="button" onclick="showType()">Charge</button>
-      <button type="button" onclick="">Pay</button>
-      <button type="button" onclick="">Transactions</button>
+      <button type="button" id="charge-btn" onclick="showType()">Charge</button>
+      <button type="button" id="pay-btn" onclick="">Pay</button>
+      <button type="button" id="tran-btn" onclick="">Transactions</button>
     </div>
 
     <div class="type">
@@ -374,8 +354,6 @@
 
     <div>
 
-    <div id="smiliesCount">
-    </div>
 
 </body>
 

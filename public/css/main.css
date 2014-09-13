@@ -1,0 +1,14 @@
+/* line 1, ../scss/main.scss */
+body {
+  text-align: center;
+}
+
+/* line 5, ../scss/main.scss */
+#profile {
+  margin-top: 10%;
+}
+
+/* line 9, ../scss/main.scss */
+#prof-photo {
+  border-radius: 50%;
+}
