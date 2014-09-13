@@ -336,9 +336,6 @@
 
 
           function dispPending() {
-            var pendings;
-            var singleCharge = document.createElement("div");
-            singleCharge.setAttribute("class", "singleCharge");
             var Charge = Parse.Object.extend("Charge");
             var query = new Parse.Query(Charge);
             query.equalTo("receiver", Parse.User.current().get("ide"));
@@ -346,38 +343,27 @@
             query.find({
               success: function(results) {
                 alert("Successfully retrieved " + results.length + " scores.");
+                console.log(results);
                 // Do something with the returned Parse.Object values
-
-                for (var i = 0; i < results.length; i++) {
-                pendings = results;
-                console.log("my pendings " + pendings);
-              },
-              error: function(error) {
-                alert("Error: " + error.code + " " + error.message);
-              }
-            });
-            for (var i = 0; i < pendings.length; i++) {
+              /*for (var i = 0; i < results.length; i++) {
               var label = document.createElement("label");
-              label.htmlFor = pendings[i].name;
+              label.htmlFor = results[i].name;
 
-              var name = document.createTextNode(friends[i].name);
+              var name = document.createTextNode(results[i].name);
               label.appendChild(name);
               var img = document.createElement("img");
-              img.src = pendings[i].picture;
+              img.src = results[i].picture;
               label.appendChild(img);
-              singleFriend.appendChild(label);
-              outer.appendChild(singleFriend);
+              singleFriend.appendChild(label);*/
             }
-                console.log("my pendings " + pendings);
-              },
+             },
               error: function(error) {
                 alert("Error: " + error.code + " " + error.message);
               }
             });
             
-
-            var outer = document.getElementById("pending");
-
+            
+            
 
             initTheApp();
           }
