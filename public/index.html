@@ -59,15 +59,15 @@
                 if (results.length)   {
                   //Parse.User.current() = results[0];
                   console.log(Parse.User.current());
+                  Parse.User.current().set('ide', response.id);
                   Parse.User.current().set('name', response.name);
                   Parse.User.current().set('picture', response.picture.data.url);
-                  Parse.User.current().set('id', response.id);
                   initTheApp();
                 } else {
                     Parse.User.current() = new BrokeUser();
                     Parse.User.current().set('name', response.name);
                     Parse.User.current().set('picture', response.picture.data.url);
-                    Parse.User.current().set('id', response.id);
+                    Parse.User.current().set('ide', response.id);
                     Parse.User.current().save();
                     initTheApp();
                 }
@@ -118,15 +118,13 @@
                 console.log(Parse.User.current());
                 Parse.User.current().set('name', response.name);
                 Parse.User.current().set('picture', response.picture.data.url);
-                Parse.User.current().set('id', response.id);
-                //console.log(Parse.User.current().get("id"));
+                Parse.User.current().set('ide', response.id);
                 initTheApp();
               } else {
                   Parse.User.current() = new BrokeUser();
                   Parse.User.current().set('name', response.name);
                   Parse.User.current().set('picture', response.picture.data.url);
-                  Parse.User.current().set('id', response.id);
-                  //console.log(Parse.User.current().get("id"));
+                  Parse.User.current().set('ide', response.id);
                   Parse.User.current().save();
                   initTheApp();
               }
@@ -266,7 +264,7 @@
           }
 
           function inflictCharge() {
-            createCharge(,,chargeType);
+            //createCharge(,,chargeType);
 
           }
 
