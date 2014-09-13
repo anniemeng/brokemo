@@ -36,7 +36,7 @@ $(function () {
     el: $("#button-opt"),
 
     events: {
-
+    "click .charge": "triggerCharge"
     },
 
     initialize: function() {
@@ -46,7 +46,12 @@ $(function () {
 
     render: function() {
 
+    },
+
+    triggerCharge: function() {
+      new ChargeView();
     }
+
   });
 
 });
