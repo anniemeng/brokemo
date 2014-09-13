@@ -300,6 +300,7 @@
             charge.set("type",  type);
             charge.set("name", name );
             charge.set("picture", picture);
+            charge.set("image", null);
             charge.save();
           };
 
@@ -346,8 +347,16 @@
               success: function(results) {
                 alert("Successfully retrieved " + results.length + " scores.");
                 // Do something with the returned Parse.Object values
+
                 for (var i = 0; i < results.length; i++) {
-              
+                pendings = results;
+                console.log("my pendings " + pendings);
+              },
+              error: function(error) {
+                alert("Error: " + error.code + " " + error.message);
+              }
+            });
+            for (var i = 0; i < pendings.length; i++) {
               var label = document.createElement("label");
               label.htmlFor = pendings[i].name;
 
