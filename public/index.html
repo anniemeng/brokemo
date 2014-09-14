@@ -306,6 +306,7 @@
             charge.set("chargerImg", Parse.User.current().get("picture"));
             charge.set("charger", Parse.User.current().get("name"));
             charge.set("image", null);
+            charge.set("isDone", false);
             charge.save();
           };
 
