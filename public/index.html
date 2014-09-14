@@ -63,6 +63,7 @@
                   Parse.User.current().set('ide', response.id);
                   Parse.User.current().set('name', response.name);
                   Parse.User.current().set('picture', response.picture.data.url);
+                  $(".viewTransactions").hide();
                   initTheApp();
                 } else {
                     Parse.User.current() = new BrokeUser();
@@ -70,6 +71,7 @@
                     Parse.User.current().set('picture', response.picture.data.url);
                     Parse.User.current().set('ide', response.id);
                     Parse.User.current().save();
+                    $(".viewTransactions").hide();
                     initTheApp();
                 }
               },
@@ -146,6 +148,7 @@
                 Parse.User.current().set('name', response.name);
                 Parse.User.current().set('picture', response.picture.data.url);
                 Parse.User.current().set('ide', response.id);
+                $(".viewTransactions").hide();
                 initTheApp();
               } else {
                   Parse.User.current() = new BrokeUser();
@@ -153,6 +156,7 @@
                   Parse.User.current().set('picture', response.picture.data.url);
                   Parse.User.current().set('ide', response.id);
                   Parse.User.current().save();
+                  $(".viewTransactions").hide();
                   initTheApp();
               }
             },
@@ -470,7 +474,7 @@
 
     <!--The divs for pay action-->
     <div class = "viewTransactions">
-      
+
       <div class = "confirmTransactions">
         <h2> CONFIRM </h2> <hr>
         <ul class= "confirm"> </ul>
