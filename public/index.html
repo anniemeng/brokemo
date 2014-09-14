@@ -61,13 +61,13 @@
                   console.log(Parse.User.current());
                   Parse.User.current().set('ide', response.id);
                   Parse.User.current().set('name', response.name);
-                  Parse.User.current().set('picture', response.picture.data.url);
+                  //Parse.User.current().set('picture', response.picture.data.url);
                   $(".viewTransactions").hide();
                   initTheApp();
                 } else {
                     Parse.User.current() = new BrokeUser();
                     Parse.User.current().set('name', response.name);
-                    Parse.User.current().set('picture', response.picture.data.url);
+                    //Parse.User.current().set('picture', response.picture.data.url);
                     Parse.User.current().set('ide', response.id);
                     Parse.User.current().save();
                     $(".viewTransactions").hide();
@@ -77,6 +77,12 @@
               error: function() {
               }
             })
+          });
+
+          FB.api('me/picture?width=180&height=180', function(response) {
+            console.log("picture" + response);
+            Parse.User.current().set('picture', response.picture.data.url);
+            Parse.User.current().save();
           });
 
           //RETRIEVE FRIEND INFO
