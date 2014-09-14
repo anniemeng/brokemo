@@ -305,6 +305,7 @@
             charge.set("picture", picture);
             charge.set("chargerImg", Parse.User.current().get("picture"));
             charge.set("charger", Parse.User.current().get("name"));
+            charge.set("image", null);
             charge.save();
           };
 
@@ -422,7 +423,7 @@
           }
 
           function accept(curr) {
-            curr.
+            //curr.
           }
 
           function reject(curr) {
@@ -459,6 +460,7 @@
                     var sImage = document.createElement("img");
                     sImage.src = results[i].attributes["image"];
 
+                    /*
                     var acception = document.createElement("button");
                     acception.type = "button";
                     acception.innerHTML = "Yeah";
@@ -472,6 +474,7 @@
                     rejection.addEventListener("click", function(result) {
                       reject(result);
                     }
+                    */
 
                     singleCharge.appendChild(profImage);
                     singleCharge.appendChild(pName);
