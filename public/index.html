@@ -389,6 +389,7 @@
                 //console.log(results);
                 // Do something with the returned Parse.Object values
                   var outer = document.getElementById("pending");
+
                   for (var i = 0; i < results.length; i++) {
                     var singleCharge = document.createElement("div");
                     singleCharge.setAttribute("class", "singleCharge");
@@ -454,13 +455,13 @@
                 // Do something with the returned Parse.Object values
                 var outer = document.getElementById("confirm");
                   if (results.length === 0) {
-                    $("#tempmsg").show();
+                    $("#tempmsg1").show();
                   }
 
                   for (var i = 0; i < results.length; i++) {
-                    $("#tempmsg").hide();
+                    $("#tempmsg1").hide();
                     var singleCharge = document.createElement("div");
-                    singleCharge.setAttribute("class", "singleCharge");
+                    singleCharge.setAttribute("class", "confCharge");
 
                     var profImage = document.createElement("img");
                     profImage.src = results[i].attributes["picture"];
@@ -605,16 +606,16 @@
                   for (var i = 0; i < results.length; i++) {
                     console.log(results[i]);
                     var singleCharge = document.createElement("div");
-                    singleCharge.setAttribute("class", "singleCharge");
+                    singleCharge.setAttribute("class", "singlePay");
 
                     var profImage = document.createElement("img");
                     profImage.src = results[i].attributes["chargerImg"];
 
                     var pName = document.createElement("h2");
-                    pName.appendChild(document.createTextNode(results[i].attributes["charger"]));
+                    pName.appendChild(document.createTextNode(results[i].attributes["charger"] + ":"));
 
                     var owes = document.createElement("p");
-                    owes.appendChild(document.createTextNode("you owe a "+ results[i].attributes["type"]));
+                    owes.appendChild(document.createTextNode("Gimme a "+ results[i].attributes["type"] + "!"));
 
                     var cam = document.createElement("button");
                     cam.type = "button";
@@ -622,6 +623,7 @@
                     //cam.setAttribute("class", "camera");
                     cam.addEventListener("click", function (result) {
                       payWith(result);
+                      result.save();
                     }.bind(null, results[i]));
 
                     singleCharge.appendChild(profImage);
@@ -678,11 +680,6 @@
       <p>Charge successful! Click "Incoming" to see for yourself!</p>
     </div>
 
-    <!--The divs for pay action-->
-    <div class ="iWillPay">
-      <ul id ="toPay"> </ul>
-    </div>
-
 <div id="webcam">
       <!--camera magic-->
 <div id="container">
@@ -690,18 +687,24 @@
       </video>
   </div>
   <canvas id="canvas" width="200" height="200" style="display:none"></canvas>
+  <img id="imgtag" src="" width="200" height="200" />
   <!-- Used to capture frame from webcam video feed -->
   <input type="button" value="Snap" id="snap"/>
   <input type="button" value="Save" id="save"/>
-  <img id="imgtag" src="" width="200" height="200" alt="capture" />
 </div>
+
+    <!--The divs for pay action-->
+    <div class ="iWillPay">
+      <ul id ="toPay"> </ul>
+    </div>
+
 
     <!--The divs for pay action-->
     <div class ="viewTransactions">
 
       <div class ="confirmTransactions">
         <h2> CONFIRM </h2> <hr>
-        <p id="tempmsg">Nothing to confirm yet!</p>
+        <p id="tempmsg1">Nothing to confirm yet!</p>
         <ul id= "confirm"> </ul>
       </div>
       <div class ="pendTransactions">
