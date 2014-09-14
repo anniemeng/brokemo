@@ -261,25 +261,64 @@ hr {
   margin: 0 auto;
 }
 
-/*
+/* line 276, ../scss/main.scss */
 .confCharge {
-  display:block;
-  .confImg {
-    width:450px;
-    height:250px;
-    margin: 2% 30%;
-  }
+  display: block;
+}
+/* line 279, ../scss/main.scss */
+.confCharge .confImg {
+  width: 450px;
+  height: 350px;
+  margin: 2% 30%;
+  margin-bottom: 2%;
+  border-radius: 20px;
+}
+/* line 287, ../scss/main.scss */
+.confCharge .confProf, .confCharge h2 {
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+/* line 293, ../scss/main.scss */
+.confCharge .confProf {
+  border: 2px solid #1bbc9b;
+  border-radius: 50%;
+}
+/* line 298, ../scss/main.scss */
+.confCharge h2 {
+  padding-left: 0.5em;
+}
+/* line 302, ../scss/main.scss */
+.confCharge p {
+  margin-top: 1%;
+  font-size: 20px;
+}
+/* line 307, ../scss/main.scss */
+.confCharge button {
+  display: inline-block;
+  padding: 0.7% 0.6%;
+  margin: 0 1%;
+  margin-bottom: 3%;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Arial';
+  font-size: 15px;
+  outline: none;
+  cursor: pointer;
+  z-index: 100;
+  transition: all ease 0.4s;
+  border-radius: 50%;
+  border: 2px solid #1bbc9b;
+  background-color: #fff;
+  color: #1bbc9b;
+}
+/* line 326, ../scss/main.scss */
+.confCharge button:hover {
+  background-color: #1bbc9b;
+  color: #fff;
+}
 
-  .confProf, h2{
-    display:inline-block;
-  }
-
-  h2 {
-    padding-left: 1em;
-  }
-
-}*/
-/* line 295, ../scss/main.scss */
+/* line 336, ../scss/main.scss */
 .singleCharge {
   display: block;
   margin: 0 auto;
@@ -287,24 +326,24 @@ hr {
   margin-bottom: 2%;
   text-align: center;
 }
-/* line 302, ../scss/main.scss */
+/* line 343, ../scss/main.scss */
 .singleCharge img, .singleCharge h2 {
   display: inline-block;
   margin-bottom: 0;
   margin-top: 0;
 }
-/* line 308, ../scss/main.scss */
+/* line 349, ../scss/main.scss */
 .singleCharge img {
   border: 2px solid #1bbc9b;
   border-radius: 50%;
 }
-/* line 313, ../scss/main.scss */
+/* line 354, ../scss/main.scss */
 .singleCharge h2 {
   color: #1bbc9b;
   font-size: 25px;
   padding-left: 0.6em;
 }
-/* line 319, ../scss/main.scss */
+/* line 360, ../scss/main.scss */
 .singleCharge p {
   display: inline-block;
   padding-left: 0.6em;
@@ -313,7 +352,7 @@ hr {
   margin-bottom: 0.5%;
   font-size: 20px;
 }
-/* line 328, ../scss/main.scss */
+/* line 369, ../scss/main.scss */
 .singleCharge button {
   display: inline-block;
   padding: 0.25% 0.6%;
@@ -332,7 +371,7 @@ hr {
   background-color: #fff;
   color: #1bbc9b;
 }
-/* line 347, ../scss/main.scss */
+/* line 388, ../scss/main.scss */
 .singleCharge button:hover {
   background-color: #1bbc9b;
   color: #fff;

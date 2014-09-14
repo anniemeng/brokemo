@@ -447,7 +447,7 @@
             var Charge = Parse.Object.extend("Charge");
             var query = new Parse.Query(Charge);
             query.equalTo("receiver", Parse.User.current().get("ide"));
-            query.notEqualTo("image", null);
+            query.exists("image");
             query.equalTo("isDone", false);
             query.find({
               success: function(results) {
@@ -471,7 +471,7 @@
                     pName.appendChild(document.createTextNode(results[i].attributes["name"]));
 
                     var owes = document.createElement("p");
-                    owes.appendChild(document.createTextNode("has provided the "+ results[i].attributes["type"]));
+                    owes.appendChild(document.createTextNode("has provided the "+ results[i].attributes["type"] + "!"));
 
                     var sImage = document.createElement("img");
                     sImage.src = results[i].attributes["image"];

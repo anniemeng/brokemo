@@ -272,24 +272,65 @@ hr {
 
 
 //CONFIRM SETUP
-/*
+
 .confCharge {
   display:block;
+
   .confImg {
     width:450px;
-    height:250px;
+    height:350px;
     margin: 2% 30%;
+    margin-bottom:2%;
+    border-radius:20px;
   }
 
   .confProf, h2{
     display:inline-block;
+    margin-top:0;
+    margin-bottom:0;
+  }
+
+  .confProf {
+    border:2px solid $primary;
+    border-radius:50%;
   }
 
   h2 {
-    padding-left: 1em;
+    padding-left: 0.5em;
   }
 
-}*/
+  p {
+    margin-top:1%;
+    font-size:20px;
+  }
+
+  button {
+    display: inline-block;
+    padding: 0.7% 0.6%;
+    margin:0 1%;
+    margin-bottom:3%;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Arial';
+    font-size: 15px;
+    //letter-spacing: 0.1em;
+    outline:none;
+    cursor: pointer;
+    z-index:100;
+    transition: all ease 0.4s;
+    border-radius:50%;
+    border:2px solid $primary;
+    background-color:#fff;
+    color:$primary;
+
+    &:hover {
+      background-color:$primary;
+      color:#fff;
+
+    }
+}
+
+}
 
 //PENDING SETUP
 .singleCharge {
