@@ -41,6 +41,7 @@
         $(".friendList").hide();
         $(".submitCharge").hide();
         $(".successMsg").hide();
+        $("#webcam").hide();
 
       FB.getLoginStatus(function (response) {
         //USER IS LOGGED IN
@@ -234,6 +235,7 @@
             $(".type").show();
             $("#showFriend").empty();
             $("#submitCharge").hide();
+            $("#webcam").hide();
             initTheApp();
           }
 
@@ -342,6 +344,7 @@
 
           //TRANSACTION FUNCTIONS
           function dispTransactions () {
+            $("#webcam").hide();
             $("#toPay").empty();
             $("#confirm").empty();
             $("#pending").empty();
@@ -497,9 +500,7 @@
 
 
           //CAMERA
-
           var v,canvas,context,w,h;
-
           document.addEventListener('DOMContentLoaded', function(){
             // when DOM loaded, get canvas 2D context and store width and height of element
             v = document.getElementById('videoElement');
@@ -507,12 +508,11 @@
             context = canvas.getContext('2d');
             w = canvas.width;
             h = canvas.height;
-
           },false);
 
           function payWith(obj) {
+            $("#webcam").show();
             var imgtag = document.getElementById('imgtag'); // get reference to img tag
-
             var video = document.querySelector("#videoElement");
 
             // check for getUserMedia support
@@ -537,16 +537,25 @@
                 if(v.paused || v.ended) return false; // if no video, exit here
 
                 context.drawImage(v,0,0,w,h); // draw video feed to canvas
+                var uri = canvas.toDataURL("image/png"); // convert canvas to data URI
 
-               var uri = canvas.toDataURL("image/png"); // convert canvas to data URI
+                // console.log(uri); // uncomment line to log URI for testing
 
-               // console.log(uri); // uncomment line to log URI for testing
+                imgtag.src = uri; // add URI to IMG tag src
 
-               imgtag.src = uri; // add URI to IMG tag src
             }
 
-            document.getElementById('save').addEventListener('click',function(e){
+            document.getElementById('snap').addEventListener('click',function(e){
                 draw(v,context,w,h); // when save button is clicked, draw video feed to canvas
+
+            });
+
+            document.getElementById('save').addEventListener('click', function(e) {
+              var uri = canvas.toDataURL("image/png");
+              imgtag.src = uri;
+              obj.set("image", imgtag.src);
+              obj.save();
+              console.log(obj.get("image"));
 
             });
 
@@ -600,9 +609,9 @@
                     cam.type = "button";
                     cam.innerHTML = "pay";
                     //cam.setAttribute("class", "camera");
-                    cam.addEventListener("click", function () {
-                      payWith(results[i]);
-                    });
+                    cam.addEventListener("click", function (result) {
+                      payWith(result);
+                    }.bind(null, results[i]));
 
                     singleCharge.appendChild(profImage);
                     singleCharge.appendChild(pName);
@@ -669,10 +678,11 @@
       <video autoplay id="videoElement">
       </video>
   </div>
-  <canvas id="canvas" width="500" height="375" style="display:none"></canvas>
+  <canvas id="canvas" width="200" height="200" style="display:none"></canvas>
   <!-- Used to capture frame from webcam video feed -->
- <input type="button" value="Save" id="save" />
-  <img id="imgtag" src="" width="500" height="375" alt="capture" />
+  <input type="button" value="Snap" id="snap"/>
+  <input type="button" value="Save" id="save"/>
+  <img id="imgtag" src="" width="200" height="200" alt="capture" />
 </div>
 
     <!--The divs for pay action-->
