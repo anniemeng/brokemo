@@ -297,7 +297,8 @@
             charge.set("type",  type);
             charge.set("name", name );
             charge.set("picture", picture);
-            charge.set("image", null);
+            charge.set("charger", Parse.User.current().get("name"));
+            charge.set("charger-img", Parse.User.current().get("picture"));
             charge.save();
           };
 
@@ -478,7 +479,7 @@
     <!--The divs for charge action -->
     <div id="actions">
       <button type="button" id="charge-btn" class="btn a" onclick="showType()">Charge</button>
-      <button type="button" id="pay-btn" class="btn a" onclick="">Pay</button>
+      <button type="button" id="pay-btn" class="btn a" onclick="dispPay()">Pay</button>
       <button type="button" id="tran-btn" class="btn a" onclick="dispTransactions()">Transactions</button>
     </div>
 
