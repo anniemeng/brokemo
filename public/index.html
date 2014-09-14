@@ -37,8 +37,6 @@
     window.onload = function isLoggedIn() {
 
       FB.getLoginStatus(function (response) {
-
-
         //USER IS LOGGED IN
         if(response.status === "connected") {
           $(".fb-login").hide();
@@ -223,10 +221,10 @@
               });
               */
 
-          // functions for charge action
 
+
+          //CHARGED FUNCTIONS
           var chargeType;
-          var chargedId;
 
           function showType() {
             $(".viewTransactions").hide();
@@ -260,6 +258,7 @@
             initTheApp();
           }
 
+          //FACEBOOK FRIEND LIST
           function dispFriend() {
             var friends = Parse.User.current().get("friends");
             var outer = document.getElementById("showFriend");
@@ -289,6 +288,7 @@
             initTheApp();
           }
 
+          //INITIATE CHARGE
           function createCharge (chargerId, payerId, type, name, picture) {
             var Charge = Parse.Object.extend("Charge");
             var charge = new Charge();
@@ -327,7 +327,7 @@
             */
           }
 
-          //functions for transactions actions
+          //TRANSACTION FUNCTIONS
           function dispTransactions () {
             $("#toPay").empty();
             $("#confirm").empty();
@@ -343,19 +343,21 @@
             initTheApp();
           }
 
+
           function deletePending(curr) {
             curr.destroy({
               success:function() {
                 console.log("deleted");
+                //dispTransactions();
+                initTheApp();
               },
               error:function() {
                 console.log("no deleted");
               }
             });
-            initTheApp();
-            dispTransactions();
           }
 
+          //SHOW PENDING LISTS
           function dispPending() {
             var Charge = Parse.Object.extend("Charge");
             var query = new Parse.Query(Charge);
@@ -380,16 +382,16 @@
                     var owes = document.createElement("p");
                     owes.appendChild(document.createTextNode("owes you a "+ results[i].attributes["type"]));
 
-                    
+
                     var deletion = document.createElement("button");
                     deletion.type = "button";
-                    deletion.value = "X";
-                    deletion.addEventListener("click", deletePending(results[i]));
+                    deletion.innerHTML = "X";
+                    deletion.onclick = deletePending(results[i]);
 
                     singleCharge.appendChild(profImage);
                     singleCharge.appendChild(pName);
                     singleCharge.appendChild(owes);
-                    //singleCharge.appendChild(deletion);
+                    singleCharge.appendChild(deletion);
 
                     outer.appendChild(singleCharge);
                   }
@@ -399,10 +401,10 @@
               }
             });
 
-
             initTheApp();
           }
 
+          //SHOW TO BE CONFIRMED LISTS
           function dispConfirm() {
             var Charge = Parse.Object.extend("Charge");
             var query = new Parse.Query(Charge);
@@ -443,11 +445,10 @@
               }
             });
 
-
             initTheApp();
           }
 
-          //functions dealing with paying
+          //PAYING FUNCTIONS
           function dispPay() {
             $("#toPay").empty();
             $("#confirm").empty();
@@ -534,8 +535,8 @@
 
 
     <!--The divs for pay action-->
-    <div class = "iWillPay">
-      <ul id = "toPay" > </ul>
+    <div class ="iWillPay">
+      <ul id ="toPay"> </ul>
     </div>
 
     <div class = "uploadPhoto">
@@ -543,13 +544,13 @@
     </div>
 
     <!--The divs for pay action-->
-    <div class = "viewTransactions">
+    <div class ="viewTransactions">
 
-      <div class = "confirmTransactions">
+      <div class ="confirmTransactions">
         <h2> CONFIRM </h2> <hr>
         <ul id= "confirm"> </ul>
       </div>
-      <div class = "pendTransactions">
+      <div class ="pendTransactions">
         <h2> PENDING </h2> <hr>
         <ul id="pending"> </ul>
       </div>
