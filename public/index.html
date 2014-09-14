@@ -230,6 +230,7 @@
 
           function showType() {
             $(".viewTransactions").hide();
+            $(".iWillPay").hide();
             $(".type").show();
             $("#showFriend").empty();
             initTheApp();
@@ -331,6 +332,7 @@
             $("#showFriend").empty();
             $(".friendList").hide();
             $(".type").hide();
+            $(".iWillPay").hide();
             initTheApp();
             dispPending();
             dispConfirm();
@@ -348,7 +350,7 @@
               }
             });
 
-            dispTransactions();
+            dispPending();
           }
 
           function dispPending() {
@@ -378,7 +380,7 @@
                     var deletion = document.createElement("button");
                     deletion.type = "button";
                     deletion.value = "X";
-                    deletion.onclick = deletePending(results[i]);
+                    deletion.addEventListener("click", deletePending(results[i]));
 
                     singleCharge.appendChild(profImage);
                     singleCharge.appendChild(pName);
@@ -443,6 +445,10 @@
 
           //functions dealing with paying
           function dispPay() {
+            $("#showFriend").empty();
+            $(".friendList").hide();
+            $(".type").hide();
+            $(".viewTransactions").hide();
             var Charge = Parse.Object.extend("Charge");
             var query = new Parse.Query(Charge);
             query.equalTo("payer", Parse.User.current().get("ide"));
@@ -453,11 +459,12 @@
                 // Do something with the returned Parse.Object values
                 var outer = document.getElementById("toPay");
                   for (var i = 0; i < results.length; i++) {
+                    console.log(results[i]);
                     var singleCharge = document.createElement("div");
                     singleCharge.setAttribute("class", "singleCharge");
 
                     var profImage = document.createElement("img");
-                    profImage.src = results[i].attributes["charger-picture"];
+                    profImage.src = results[i].attributes["charger-img"];
                     var pName = document.createElement("h2");
 
                     pName.appendChild(document.createTextNode(results[i].attributes["charger"]));
