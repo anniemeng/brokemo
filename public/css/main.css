@@ -15,22 +15,24 @@ body {
 /* line 17, ../scss/main.scss */
 #prof-photo {
   border-radius: 50%;
+  width: 200px;
+  height: 200px;
 }
 
-/* line 21, ../scss/main.scss */
+/* line 23, ../scss/main.scss */
 #fb-name {
   font-size: 75px;
   color: #fff;
 }
 
-/* line 27, ../scss/main.scss */
+/* line 29, ../scss/main.scss */
 #actions {
   background-color: #1bbc9b;
   text-align: center;
   margin: 0 auto;
 }
 
-/* line 37, ../scss/main.scss */
+/* line 39, ../scss/main.scss */
 .btn {
   display: inline-block;
   padding: 1%;
@@ -47,13 +49,13 @@ body {
 }
 
 @media (max-width: 1000px) {
-  /* line 53, ../scss/main.scss */
+  /* line 55, ../scss/main.scss */
   .btn {
     margin-top: 7%;
   }
 }
 /****LIGHTEN/DARKEN****/
-/* line 59, ../scss/main.scss */
+/* line 61, ../scss/main.scss */
 .a {
   border: 2px solid #fff;
   border-radius: 50px;
@@ -61,13 +63,13 @@ body {
   background-color: #1bbc9b;
   transition: all ease 0.4s;
 }
-/* line 68, ../scss/main.scss */
+/* line 70, ../scss/main.scss */
 .a:hover {
   background-color: rgba(255, 255, 255, 0.5);
   color: #fff;
 }
 
-/* line 75, ../scss/main.scss */
+/* line 77, ../scss/main.scss */
 .b {
   border: 2px solid #fff;
   border-radius: 50px;
@@ -75,47 +77,47 @@ body {
   background-color: #1bbc9b;
   transition: all ease 0.4s;
 }
-/* line 84, ../scss/main.scss */
+/* line 86, ../scss/main.scss */
 .b:hover {
   background-color: rgba(27, 188, 155, 0.3);
   border-color: rgba(27, 188, 155, 0.3);
   color: #1bbc9b;
 }
 
-/* line 92, ../scss/main.scss */
+/* line 94, ../scss/main.scss */
 .type {
   padding-top: 3%;
 }
 
-/* line 96, ../scss/main.scss */
+/* line 98, ../scss/main.scss */
 .successMsg {
   margin-top: 5%;
   margin-bottom: 5%;
 }
 
-/* line 102, ../scss/main.scss */
+/* line 104, ../scss/main.scss */
 .single {
   display: inline-block;
   width: 100%;
 }
 
-/* line 107, ../scss/main.scss */
+/* line 109, ../scss/main.scss */
 label {
   padding-left: 1%;
   font-size: 15px;
 }
-/* line 111, ../scss/main.scss */
+/* line 113, ../scss/main.scss */
 label img {
   padding-right: 1%;
 }
 
-/* line 116, ../scss/main.scss */
+/* line 118, ../scss/main.scss */
 .friendList {
   padding-top: 3%;
   padding-bottom: 2%;
 }
 
-/* line 125, ../scss/main.scss */
+/* line 127, ../scss/main.scss */
 hr {
   width: 30%;
 }
