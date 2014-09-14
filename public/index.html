@@ -439,13 +439,13 @@
                     singleCharge.setAttribute("class", "singleCharge");
 
                     var profImage = document.createElement("img");
-                    profImage.src = results[i].attributes["picture"];
+                    profImage.src = results[i].attributes["charger-picture"];
                     var pName = document.createElement("h2");
 
-                    pName.appendChild(document.createTextNode(results[i].attributes["name"]));
+                    pName.appendChild(document.createTextNode(results[i].attributes["charger"]));
 
                     var owes = document.createElement("p");
-                    owes.appendChild(document.createTextNode("you owe "+ results[i].attributes["type"]));
+                    owes.appendChild(document.createTextNode("you owe a"+ results[i].attributes["type"]));
 
 
                     singleCharge.appendChild(profImage);
