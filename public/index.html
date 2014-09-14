@@ -45,6 +45,7 @@
           $(".type").hide();
           $(".friendList").hide();
           $(".submitCharge").hide();
+          $(".successMsg").hide();
 
           //RETRIEVE PROFILE INFO
           FB.api('/me/?fields=id,name,picture', function(response) {
@@ -227,10 +228,12 @@
           var chargeType;
 
           function showType() {
+            $(".successMsg").hide();
             $(".viewTransactions").hide();
             $(".iWillPay").hide();
             $(".type").show();
             $("#showFriend").empty();
+            $("#submitCharge").hide();
             initTheApp();
           }
 
@@ -260,6 +263,7 @@
 
           //FACEBOOK FRIEND LIST
           function dispFriend() {
+            $(".successMsg").hide();
             var friends = Parse.User.current().get("friends");
             var outer = document.getElementById("showFriend");
             var singleFriend = document.createElement("div");
@@ -285,6 +289,7 @@
               singleFriend.appendChild(label);
               outer.appendChild(singleFriend);
             }
+            $("#submitCharge").show();
             initTheApp();
           }
 
@@ -309,6 +314,12 @@
             var imgProfile = document.getElementById(selected).src;
             console.log("charge type" + chargeType + "img:" + imgProfile);
             createCharge(Parse.User.current().get("ide"), selected, chargeType, namePerson, imgProfile);
+            //hide everything and show success
+            $("#showFriend").empty();
+            $(".friendList").hide();
+            $(".type").hide();
+            $("#submitCharge").hide();
+            $(".successMsg").show();
 
 
             /*CHECK IF CHARGE CREATED
@@ -335,6 +346,8 @@
             $("#showFriend").empty();
             $(".friendList").hide();
             $(".type").hide();
+            $("#submitCharge").hide();
+            $(".successMsg").hide();
             $(".iWillPay").hide();
             initTheApp();
             dispPending();
@@ -457,6 +470,7 @@
                     navigator.mozGetUserMedia || navigator.msGetUserMedia);
         }
 
+
         if (hasGetUserMedia()) {
           // Good to go!
         } else {
@@ -532,6 +546,8 @@
             $("#showFriend").empty();
             $(".friendList").hide();
             $(".type").hide();
+            $("#submitCharge").hide();
+            $(".successMsg").hide();
             $(".viewTransactions").hide();
             var Charge = Parse.Object.extend("Charge");
             var query = new Parse.Query(Charge);
@@ -594,26 +610,26 @@
     <div id="actions">
       <button type="button" id="charge-btn" class="btn a" onclick="showType()">Charge</button>
       <button type="button" id="pay-btn" class="btn a" onclick="dispPay()">Pay</button>
-      <button type="button" id="tran-btn" class="btn a" onclick="dispTransactions()">Transactions</button>
+      <button type="button" id="tran-btn" class="btn a" onclick="dispTransactions()">Incoming</button>
     </div>
 
     <section class="content">
 
     <div class="type">
-      <button type="button" class="btn a" onclick="setTypeSmile()">Smile</button>
-      <button type="button" class="btn a" onclick="setTypeDinner()">Dinner</button>
-      <button type="button" class="btn a" onclick="setTypeFavor()">Favor</button>
+      <button type="button" class="btn b" onclick="setTypeSmile()">Smile</button>
+      <button type="button" class="btn b" onclick="setTypeDinner()">Dinner</button>
+      <button type="button" class="btn b" onclick="setTypeFavor()">Favor</button>
     </div>
 
 
     <div class="friendList">
-      <ul id="showFriend">
-
-      </ul>
-      <button onclick="inflictCharge()" > Submit Charge </button>
-
+      <ul id="showFriend"></ul>
+      <button id="submitCharge" class="btn b" onclick="inflictCharge()"> Submit Charge </button>
     </div>
 
+    <div class="successMsg">
+      <p>Charge successful! Click "Incoming" to see for yourself!</p>
+    </div>
 
     <!--The divs for pay action-->
     <div class ="iWillPay">
