@@ -467,7 +467,7 @@
 
 
           //CAMERA
-          /*
+
           var v,canvas,context,w,h;
 
           document.addEventListener('DOMContentLoaded', function(){
@@ -530,12 +530,6 @@
                 imgtag.src = fr.result;
             }
 
-          }
-          */
-
-          function payWith(obj) {
-            console.log(arguments)
-            alert("hi");
           }
 
           //PAYING FUNCTIONS
@@ -639,22 +633,17 @@
       <ul id ="toPay"> </ul>
     </div>
 
-
-    <!--camera magic-->
-  <!--<div id="container">
+<div id="webcam">
+      <!--camera magic-->
+<div id="container">
       <video autoplay id="videoElement">
       </video>
-  </div>-->
-
-<!--
-  <canvas id="canvas" width="500" height="375"></canvas>
-
+  </div>
+  <canvas id="canvas" width="500" height="375" style="display:none"></canvas>
   <!-- Used to capture frame from webcam video feed -->
-<!--  <input type="button" value="Save" id="save" />
-
-
+ <input type="button" value="Save" id="save" />
   <img id="imgtag" src="" width="500" height="375" alt="capture" />
--->
+</div>
 
     <!--The divs for pay action-->
     <div class ="viewTransactions">
