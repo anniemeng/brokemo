@@ -329,6 +329,9 @@
 
           //functions for transactions actions
           function dispTransactions () {
+            $("#toPay").empty();
+            $("#confirm").empty();
+            $("#pending").empty();
             $("#showFriend").empty();
             $(".friendList").hide();
             $(".type").hide();
@@ -446,6 +449,9 @@
 
           //functions dealing with paying
           function dispPay() {
+            $("#toPay").empty();
+            $("#confirm").empty();
+            $("#pending").empty();
             $("#showFriend").empty();
             $(".friendList").hide();
             $(".type").hide();
@@ -466,12 +472,12 @@
 
                     var profImage = document.createElement("img");
                     profImage.src = results[i].attributes["charger-img"];
-                    var pName = document.createElement("h2");
 
+                    var pName = document.createElement("h2");
                     pName.appendChild(document.createTextNode(results[i].attributes["charger"]));
 
                     var owes = document.createElement("p");
-                    owes.appendChild(document.createTextNode("you owe a"+ results[i].attributes["type"]));
+                    owes.appendChild(document.createTextNode("you owe a "+ results[i].attributes["type"]));
 
 
                     singleCharge.appendChild(profImage);
@@ -486,7 +492,7 @@
               }
             });
 
-
+            $(".iWillPay").show();
             initTheApp();
           }
 
