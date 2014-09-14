@@ -424,11 +424,11 @@
           }
 
           function accept(curr) {
-            //curr.
+            curr.set("isDone", true);
           }
 
           function reject(curr) {
-
+            curr.set("image", null);
           }
 
 
@@ -461,21 +461,21 @@
                     var sImage = document.createElement("img");
                     sImage.src = results[i].attributes["image"];
 
-                    /*
+                    
                     var acception = document.createElement("button");
                     acception.type = "button";
                     acception.innerHTML = "Yeah";
-                    acception.addEventListener("click", function(result) {
-                      accept(result);
+                    acception.addEventListener("click", function() {
+                      accept(result[i]);
                     }
 
                     var rejection = document.createElement("button");
                     rejection.type = "button";
                     rejection.innerHTML = "Nah";
-                    rejection.addEventListener("click", function(result) {
-                      reject(result);
+                    rejection.addEventListener("click", function() {
+                      reject(result[i]);
                     }
-                    */
+                    
 
                     singleCharge.appendChild(profImage);
                     singleCharge.appendChild(pName);
