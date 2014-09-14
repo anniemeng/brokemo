@@ -338,6 +338,18 @@
             initTheApp();
           }
 
+          function deletePending(curr) {
+            curr.destroy({
+              success:function() {
+                console.log("deleted");
+              },
+              error:function() {
+                console.log("no deleted");
+              }
+            });
+
+            dispTransactions();
+          }
 
           function dispPending() {
             var Charge = Parse.Object.extend("Charge");
@@ -363,9 +375,15 @@
                     var owes = document.createElement("p");
                     owes.appendChild(document.createTextNode("owes you a "+ results[i].attributes["type"]));
 
+                    var deletion = document.createElement("button");
+                    deletion.type = "button";
+                    deletion.value = "X";
+                    deletion.onclick = deletePending(results[i]);
+
                     singleCharge.appendChild(profImage);
                     singleCharge.appendChild(pName);
                     singleCharge.appendChild(owes);
+                    singleCharge.appendChild(deletion);
 
                     outer.appendChild(singleCharge);
                   }
