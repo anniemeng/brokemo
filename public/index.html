@@ -382,16 +382,17 @@
                     var owes = document.createElement("p");
                     owes.appendChild(document.createTextNode("owes you a "+ results[i].attributes["type"]));
 
-
+                    /*
                     var deletion = document.createElement("button");
                     deletion.type = "button";
                     deletion.innerHTML = "X";
                     deletion.onclick = deletePending(results[i]);
+                    */
 
                     singleCharge.appendChild(profImage);
                     singleCharge.appendChild(pName);
                     singleCharge.appendChild(owes);
-                    singleCharge.appendChild(deletion);
+                    //singleCharge.appendChild(deletion);
 
                     outer.appendChild(singleCharge);
                   }
@@ -448,6 +449,46 @@
             initTheApp();
           }
 
+
+          //CAMERA
+
+          video = document.getElementById("live");
+
+          navigator.webkitGetUserMedia("video",
+              function(stream) {
+                video.src = window.webkitURL.createObjectURL(stream)
+              },
+              function(err) {
+                console.log("Unable to get video stream!")
+              }
+          );
+
+      function snap() {
+        live = document.getElementById("live")
+        snapshot = document.getElementById("snapshot")
+        filmroll = document.getElementById("filmroll")
+
+        // Make the canvas the same size as the live video
+        snapshot.width = live.clientWidth
+        snapshot.height = live.clientHeight
+
+        // Draw a frame of the live video onto the canvas
+        c = snapshot.getContext("2d")
+        c.drawImage(live, 0, 0, snapshot.width, snapshot.height)
+
+        // Create an image element with the canvas image data
+        img = document.createElement("img")
+        img.src = snapshot.toDataURL("image/png")
+        img.style.padding = 5
+        img.width = snapshot.width / 2
+        img.height = snapshot.height / 2
+
+        // Add the new image to the film roll
+        filmroll.appendChild(img)
+      }
+
+
+
           //PAYING FUNCTIONS
           function dispPay() {
             $("#toPay").empty();
@@ -480,10 +521,15 @@
                     var owes = document.createElement("p");
                     owes.appendChild(document.createTextNode("you owe a "+ results[i].attributes["type"]));
 
+                    var cam = document.createElement("button");
+                    cam.type = "button";
+                    cam.innerHTML = "pay";
+                    cam.onclick = snap();
 
                     singleCharge.appendChild(profImage);
                     singleCharge.appendChild(pName);
                     singleCharge.appendChild(owes);
+                    singleCharge.appendChild(cam);
 
                     outer.appendChild(singleCharge);
                   }
@@ -540,6 +586,12 @@
     </div>
 
     <div class = "uploadPhoto">
+      <!--<input type="file" id="take-picture" accept="image/*">-->
+        <video id="live" autoplay></video>
+    <canvas id="snapshot" style="display:none"></canvas>
+
+    <p></p>
+    <div id="filmroll"></div>
       <!--the magical section where we upload photo-->
     </div>
 
@@ -555,6 +607,7 @@
         <ul id="pending"> </ul>
       </div>
     </div>
+
 
   </section>
 
