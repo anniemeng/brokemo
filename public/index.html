@@ -36,16 +36,16 @@
     //IF USER SESSION IS CONNECTED SHOW APP
     window.onload = function isLoggedIn() {
 
+        //charge divs hide
+        $(".type").hide();
+        $(".friendList").hide();
+        $(".submitCharge").hide();
+        $(".successMsg").hide();
+
       FB.getLoginStatus(function (response) {
         //USER IS LOGGED IN
         if(response.status === "connected") {
           $(".fb-login").hide();
-
-          //charge divs hide
-          $(".type").hide();
-          $(".friendList").hide();
-          $(".submitCharge").hide();
-          $(".successMsg").hide();
 
           //RETRIEVE PROFILE INFO
           FB.api('/me/?fields=id,name,picture', function(response) {
@@ -280,11 +280,11 @@
               label.htmlFor = friends[i].name;
 
               var name = document.createTextNode(friends[i].name);
-              label.appendChild(name);
               var img = document.createElement("img");
               img.src = friends[i].picture;
               img.setAttribute("id", friends[i].id);
               label.appendChild(img);
+              label.appendChild(name);
               singleFriend.appendChild(check);
               singleFriend.appendChild(label);
               outer.appendChild(singleFriend);
@@ -468,9 +468,9 @@
             //obj.setAttribute(im)
 
           }
-        
 
-          
+
+
 
 
 

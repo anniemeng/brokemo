@@ -10,7 +10,7 @@ body {
 //PROFILE INFO
 #profile {
   padding-top:10%;
-  padding-bottom:2%;
+  padding-bottom:1%;
   background-color:$primary;
 }
 
@@ -37,7 +37,8 @@ body {
 .btn {
 		display: inline-block;
 		padding: 1%;
-		margin:3% 0.5%;
+		margin:1% 0.5%;
+    margin-bottom:3%;
 		text-align: center;
 		text-transform: uppercase;
 		font-family: 'Arial';
@@ -87,8 +88,41 @@ body {
   }
 }
 
+//TYPE BUTTONS
+.type {
+  padding-top:3%;
+}
 //SUCCESS MSG FOR CHARGE
 .successMsg {
   margin-top:5%;
+  margin-bottom:5%;
+}
+
+//FRIEND LIST STYLING
+.single {
+  display:inline-block;
+  width:100%;
+}
+
+label {
+  padding-left:1%;
+  font-size:15px;
+
+  img {
+    padding-right:1%;
+  }
+}
+
+.friendList {
+  padding-top:3%;
+  padding-bottom:2%;
+}
+
+
+
+
+//INCOMING STYLING
+hr {
+  width:30%;
 }
 
