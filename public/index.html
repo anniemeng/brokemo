@@ -349,7 +349,7 @@
                 console.log("no deleted");
               }
             });
-
+            initTheApp();
             dispPending();
           }
 
@@ -377,15 +377,16 @@
                     var owes = document.createElement("p");
                     owes.appendChild(document.createTextNode("owes you a "+ results[i].attributes["type"]));
 
+                    /*
                     var deletion = document.createElement("button");
                     deletion.type = "button";
                     deletion.value = "X";
-                    deletion.addEventListener("click", deletePending(results[i]));
+                    deletion.addEventListener("click", deletePending(results[i]));*/
 
                     singleCharge.appendChild(profImage);
                     singleCharge.appendChild(pName);
                     singleCharge.appendChild(owes);
-                    singleCharge.appendChild(deletion);
+                    //singleCharge.appendChild(deletion);
 
                     outer.appendChild(singleCharge);
                   }
