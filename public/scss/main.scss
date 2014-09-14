@@ -1,27 +1,30 @@
 $primary: #1BBC9B;
 $grey: #ACADAC;
+$font: 'Lato', sans-serif;
 
 body {
   text-align:center;
   color:$grey;
   background-color:#fff;
+  font-family:$font;
 }
 
 //PROFILE INFO
 #profile {
-  padding-top:10%;
-  padding-bottom:1%;
+  padding-top:7%;
+  padding-bottom:2%;
   background-color:$primary;
 }
 
 #prof-photo {
+  border: 2px solid #fff;
   border-radius:50%;
   width:200px;
   height:200px;
 }
 
 #fb-name {
-  font-size:75px;
+  font-size:50px;
   color:#fff;
 }
 
@@ -98,6 +101,7 @@ body {
 .successMsg {
   margin-top:5%;
   margin-bottom:5%;
+  font-size:25px;
 }
 
 //FRIEND LIST STYLING
@@ -108,7 +112,7 @@ body {
 
 label {
   padding-left:1%;
-  font-size:15px;
+  font-size:20px;
 
   img {
     padding-right:1%;
@@ -124,7 +128,40 @@ label {
 
 
 //INCOMING STYLING
-hr {
-  width:30%;
+.confirmTransactions h2, .pendTransactions h2 {
+  text-align:center;
+  margin-top:2%;
 }
 
+hr {
+  margin-bottom:4%;
+  width:7%;
+  height:2px;
+  background-color:$primary;
+  border:none;
+}
+
+#confirm, #pending {
+  text-align:center;
+  margin:0 auto;
+}
+
+
+//CONFIRM SETUP
+.singleCharge {
+  display:block;
+  .confImg {
+    width:400px;
+    height:300px;
+    margin: 2% 30%;
+  }
+
+  .confProf, h2{
+    display:inline-block;
+  }
+
+  h2 {
+    padding-left: 1em;
+  }
+
+}

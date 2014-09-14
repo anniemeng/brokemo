@@ -6,6 +6,7 @@
   <meta name="description" content="My Parse App">
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="css/normalize.css">
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
   <link rel="stylesheet" href="css/main.css">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
@@ -428,10 +429,14 @@
 
           function accept(curr) {
             curr.set("isDone", true);
+            curr.save();
+            dispTransactions();
           }
 
           function reject(curr) {
             curr.set("image", null);
+            curr.save();
+            dispTransactions();
           }
 
 
@@ -448,12 +453,18 @@
                 //alert("Successfully retrieved " + results.length + " scores.");
                 // Do something with the returned Parse.Object values
                 var outer = document.getElementById("confirm");
+                  if (results.length === 0) {
+                    $("#tempmsg").show();
+                  }
+
                   for (var i = 0; i < results.length; i++) {
+                    $("#tempmsg").hide();
                     var singleCharge = document.createElement("div");
                     singleCharge.setAttribute("class", "singleCharge");
 
                     var profImage = document.createElement("img");
                     profImage.src = results[i].attributes["picture"];
+                    profImage.setAttribute("class", "confProf");
                     var pName = document.createElement("h2");
 
                     pName.appendChild(document.createTextNode(results[i].attributes["name"]));
@@ -463,27 +474,27 @@
 
                     var sImage = document.createElement("img");
                     sImage.src = results[i].attributes["image"];
+                    sImage.setAttribute("class", "confImg");
 
-                    
+
                     var acception = document.createElement("button");
                     acception.type = "button";
                     acception.innerHTML = "Yeah";
-                    acception.addEventListener("click", function() {
-                      accept(result[i]);
-                    }
+                    acception.addEventListener("click", function(result) {
+                      accept(result);
+                    }.bind(null, results[i]));
 
                     var rejection = document.createElement("button");
                     rejection.type = "button";
                     rejection.innerHTML = "Nah";
-                    rejection.addEventListener("click", function() {
-                      reject(result[i]);
-                    }
-                    
+                    rejection.addEventListener("click", function(result) {
+                      reject(result);
+                    }.bind(null, results[i]));
 
+                    singleCharge.appendChild(sImage);
                     singleCharge.appendChild(profImage);
                     singleCharge.appendChild(pName);
                     singleCharge.appendChild(owes);
-                    singleCharge.appendChild(sImage);
                     singleCharge.appendChild(acception);
                     singleCharge.appendChild(rejection);
 
@@ -690,6 +701,7 @@
 
       <div class ="confirmTransactions">
         <h2> CONFIRM </h2> <hr>
+        <p id="tempmsg">Nothing to confirm yet!</p>
         <ul id= "confirm"> </ul>
       </div>
       <div class ="pendTransactions">
@@ -697,7 +709,6 @@
         <ul id="pending"> </ul>
       </div>
     </div>
-
 
   </section>
 

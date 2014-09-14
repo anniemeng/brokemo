@@ -1,38 +1,40 @@
-/* line 4, ../scss/main.scss */
+/* line 5, ../scss/main.scss */
 body {
   text-align: center;
   color: #acadac;
   background-color: #fff;
+  font-family: "Lato", sans-serif;
 }
 
-/* line 11, ../scss/main.scss */
+/* line 13, ../scss/main.scss */
 #profile {
-  padding-top: 10%;
-  padding-bottom: 1%;
+  padding-top: 7%;
+  padding-bottom: 2%;
   background-color: #1bbc9b;
 }
 
-/* line 17, ../scss/main.scss */
+/* line 19, ../scss/main.scss */
 #prof-photo {
+  border: 2px solid #fff;
   border-radius: 50%;
   width: 200px;
   height: 200px;
 }
 
-/* line 23, ../scss/main.scss */
+/* line 26, ../scss/main.scss */
 #fb-name {
-  font-size: 75px;
+  font-size: 50px;
   color: #fff;
 }
 
-/* line 29, ../scss/main.scss */
+/* line 32, ../scss/main.scss */
 #actions {
   background-color: #1bbc9b;
   text-align: center;
   margin: 0 auto;
 }
 
-/* line 39, ../scss/main.scss */
+/* line 42, ../scss/main.scss */
 .btn {
   display: inline-block;
   padding: 1%;
@@ -49,13 +51,13 @@ body {
 }
 
 @media (max-width: 1000px) {
-  /* line 55, ../scss/main.scss */
+  /* line 58, ../scss/main.scss */
   .btn {
     margin-top: 7%;
   }
 }
 /****LIGHTEN/DARKEN****/
-/* line 61, ../scss/main.scss */
+/* line 64, ../scss/main.scss */
 .a {
   border: 2px solid #fff;
   border-radius: 50px;
@@ -63,13 +65,13 @@ body {
   background-color: #1bbc9b;
   transition: all ease 0.4s;
 }
-/* line 70, ../scss/main.scss */
+/* line 73, ../scss/main.scss */
 .a:hover {
   background-color: rgba(255, 255, 255, 0.5);
   color: #fff;
 }
 
-/* line 77, ../scss/main.scss */
+/* line 80, ../scss/main.scss */
 .b {
   border: 2px solid #fff;
   border-radius: 50px;
@@ -77,47 +79,83 @@ body {
   background-color: #1bbc9b;
   transition: all ease 0.4s;
 }
-/* line 86, ../scss/main.scss */
+/* line 89, ../scss/main.scss */
 .b:hover {
   background-color: rgba(27, 188, 155, 0.3);
   border-color: rgba(27, 188, 155, 0.3);
   color: #1bbc9b;
 }
 
-/* line 94, ../scss/main.scss */
+/* line 97, ../scss/main.scss */
 .type {
   padding-top: 3%;
 }
 
-/* line 98, ../scss/main.scss */
+/* line 101, ../scss/main.scss */
 .successMsg {
   margin-top: 5%;
   margin-bottom: 5%;
+  font-size: 25px;
 }
 
-/* line 104, ../scss/main.scss */
+/* line 108, ../scss/main.scss */
 .single {
   display: inline-block;
   width: 100%;
 }
 
-/* line 109, ../scss/main.scss */
+/* line 113, ../scss/main.scss */
 label {
   padding-left: 1%;
-  font-size: 15px;
+  font-size: 20px;
 }
-/* line 113, ../scss/main.scss */
+/* line 117, ../scss/main.scss */
 label img {
   padding-right: 1%;
 }
 
-/* line 118, ../scss/main.scss */
+/* line 122, ../scss/main.scss */
 .friendList {
   padding-top: 3%;
   padding-bottom: 2%;
 }
 
-/* line 127, ../scss/main.scss */
+/* line 131, ../scss/main.scss */
+.confirmTransactions h2, .pendTransactions h2 {
+  text-align: center;
+  margin-top: 2%;
+}
+
+/* line 136, ../scss/main.scss */
 hr {
-  width: 30%;
+  margin-bottom: 4%;
+  width: 7%;
+  height: 2px;
+  background-color: #1bbc9b;
+  border: none;
+}
+
+/* line 144, ../scss/main.scss */
+#confirm, #pending {
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* line 151, ../scss/main.scss */
+.singleCharge {
+  display: block;
+}
+/* line 153, ../scss/main.scss */
+.singleCharge .confImg {
+  width: 400px;
+  height: 300px;
+  margin: 2% 30%;
+}
+/* line 159, ../scss/main.scss */
+.singleCharge .confProf, .singleCharge h2 {
+  display: inline-block;
+}
+/* line 163, ../scss/main.scss */
+.singleCharge h2 {
+  padding-left: 1em;
 }
