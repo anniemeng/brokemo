@@ -384,6 +384,30 @@
               success: function(results) {
                 //alert("Successfully retrieved " + results.length + " scores.");
                 // Do something with the returned Parse.Object values
+                var outer = document.getElementById("confirm");
+                  for (var i = 0; i < results.length; i++) {
+                    var singleCharge = document.createElement("div");
+                    singleCharge.setAttribute("class", "singleCharge");
+
+                    var profImage = document.createElement("img");
+                    profImage.src = results[i].attributes["picture"];
+                    var pName = document.createElement("h2");
+
+                    pName.appendChild(document.createTextNode(results[i].attributes["name"]));
+
+                    var owes = document.createElement("p");
+                    owes.appendChild(document.createTextNode("has provided the "+ results[i].attributes["type"]));
+
+                    var sImage = document.createElement("img");
+                    sImage.src = results[i].attributes["image"];
+
+                    singleCharge.appendChild(profImage);
+                    singleCharge.appendChild(pName);
+                    singleCharge.appendChild(owes);
+                    singleCharge.appendChild(sImage);
+
+                    outer.appendChild(singleCharge);
+                  }
               },
               error: function(error) {
                 alert("Error: " + error.code + " " + error.message);
