@@ -417,14 +417,51 @@
                 alert("Error: " + error.code + " " + error.message);
               }
             });
-            var outer = document.getElementById("confirm");
 
 
             initTheApp();
           }
 
+          //functions dealing with paying
+          function dispConfirm() {
+            var Charge = Parse.Object.extend("Charge");
+            var query = new Parse.Query(Charge);
+            query.equalTo("payer", Parse.User.current().get("ide"));
+            query.equalTo("image", null);
+            query.find({
+              success: function(results) {
+                //alert("Successfully retrieved " + results.length + " scores.");
+                // Do something with the returned Parse.Object values
+                var outer = document.getElementById("toPay");
+                  for (var i = 0; i < results.length; i++) {
+                    var singleCharge = document.createElement("div");
+                    singleCharge.setAttribute("class", "singleCharge");
+
+                    var profImage = document.createElement("img");
+                    profImage.src = results[i].attributes["picture"];
+                    var pName = document.createElement("h2");
+
+                    pName.appendChild(document.createTextNode(results[i].attributes["name"]));
+
+                    var owes = document.createElement("p");
+                    owes.appendChild(document.createTextNode("has provided the "+ results[i].attributes["type"]));
 
 
+                    singleCharge.appendChild(profImage);
+                    singleCharge.appendChild(pName);
+                    singleCharge.appendChild(owes);
+
+                    outer.appendChild(singleCharge);
+                  }
+              },
+              error: function(error) {
+                alert("Error: " + error.code + " " + error.message);
+              }
+            });
+
+
+            initTheApp();
+          }
 
     </script>
 
@@ -465,7 +502,7 @@
 
     <!--The divs for pay action-->
     <div class = "iWillPay">
-      <!--list of made charges-->
+      <ul class = "toPay" > </ul>
     </div>
 
     <div class = "uploadPhoto">
