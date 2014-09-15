@@ -152,7 +152,8 @@
                 $(".viewTransactions").hide();
                 initTheApp();
               } else {
-                  Parse.User.current() = new BrokeUser();
+                  var user = new BrokeUser();
+                  Parse.User.current() = user;
                   Parse.User.current().set('name', response.name);
                   Parse.User.current().set('picture', response.picture.data.url);
                   Parse.User.current().set('ide', response.id);
@@ -631,7 +632,6 @@
                     //cam.setAttribute("class", "camera");
                     cam.addEventListener("click", function (result) {
                       payWith(result);
-                      result.save();
                     }.bind(null, results[i]));
 
                     singleCharge.appendChild(profImage);
