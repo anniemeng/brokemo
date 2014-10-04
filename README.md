@@ -7,3 +7,8 @@ With Facebook login, you can make transactions easily with your Facebook friends
 Created at PennApps Fall 2014 
 
 ![alt tag](http://s3.amazonaws.com/challengepost/photos/production/software_photos/000/158/196/datas/xlarge.png?1410701722)
+![alt tag](http://s3.amazonaws.com/challengepost/photos/production/software_photos/000/158/197/datas/xlarge.png?1410701721)
+![alt tag](http://s3.amazonaws.com/challengepost/photos/production/software_photos/000/158/198/datas/xlarge.png?1410701732)
+
+
+Find out more [here](http://challengepost.com/software/brokemo-jdexg)
